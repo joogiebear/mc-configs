@@ -36,53 +36,80 @@ const downloadBasePath = `/downloads/${config.id}`;
     </a>
   </div>
 
-  <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6 md:p-8">
-    <div class="flex flex-wrap items-start justify-between gap-4">
-      <div>
+  <div class="grid gap-6 lg:grid-cols-3">
+    <!-- Main content (appears first on mobile) -->
+    <div class="lg:col-span-2 lg:order-2 order-1">
+      <!-- Header -->
+      <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6 mb-6">
         <h1 class="text-2xl font-bold text-white md:text-3xl">
           {config.data.plugin}
         </h1>
-        <p class="mt-2 text-zinc-400">
+        <p class="mt-3 text-zinc-400 leading-relaxed">
           {config.data.description}
         </p>
       </div>
-      <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-400">
-        v{config.data.version}
-      </span>
-    </div>
 
-    <div class="mt-6 flex flex-wrap gap-4 text-sm text-zinc-500">
-      <span class="inline-flex items-center gap-1">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        Updated {formattedDate}
-      </span>
-      <span class="inline-flex items-center gap-1 rounded bg-zinc-700/50 px-2 py-0.5">
-        Minecraft {config.data.minecraftVersion}
-      </span>
-    </div>
-
-    <hr class="my-6 border-zinc-700" />
-
-    <div>
-      <h2 class="text-lg font-semibold text-white mb-4">Download Files</h2>
-      <div class="flex flex-wrap gap-3">
-        {config.data.files.map((file) => (
-          <DownloadButton
-            name={file.name}
-            href={`${downloadBasePath}/${file.name}`}
-          />
-        ))}
+      <!-- Content -->
+      <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+        <Changelog>
+          <Content />
+        </Changelog>
       </div>
     </div>
 
-    <hr class="my-6 border-zinc-700" />
+    <!-- Sidebar with metadata (appears second on mobile, first on desktop) -->
+    <div class="lg:col-span-1 lg:order-1 order-2 space-y-4 lg:sticky lg:top-8 lg:self-start">
+      <!-- Info Card -->
+      <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-5">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div>
+            <span class="text-xs text-zinc-500 uppercase tracking-wider">Config Pack</span>
+            <p class="text-sm font-medium text-white">{config.data.category}</p>
+          </div>
+        </div>
 
-    <div>
-      <Changelog>
-        <Content />
-      </Changelog>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-center justify-between py-2 border-t border-zinc-700/50">
+            <span class="text-zinc-500">Version</span>
+            <span class="font-medium text-emerald-400">v{config.data.version}</span>
+          </div>
+          <div class="flex items-center justify-between py-2 border-t border-zinc-700/50">
+            <span class="text-zinc-500">Minecraft</span>
+            <span class="font-medium text-white">{config.data.minecraftVersion}</span>
+          </div>
+          <div class="flex items-center justify-between py-2 border-t border-zinc-700/50">
+            <span class="text-zinc-500">Updated</span>
+            <span class="font-medium text-white">{formattedDate}</span>
+          </div>
+          <div class="flex items-center justify-between py-2 border-t border-zinc-700/50">
+            <span class="text-zinc-500">Files</span>
+            <span class="font-medium text-white">{config.data.files.length}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download Card -->
+      <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-5">
+        <h2 class="text-sm font-semibold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Downloads
+        </h2>
+        <div class="flex flex-col gap-2">
+          {config.data.files.map((file) => (
+            <DownloadButton
+              name={file.name}
+              href={`${downloadBasePath}/${file.name}`}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </Layout>
