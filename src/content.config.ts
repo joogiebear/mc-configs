@@ -1,6 +1,22 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const categoryEnum = z.enum([
+  'Economy',
+  'Minions',
+  'Chat',
+  'Permissions',
+  'World Management',
+  'Combat',
+  'Skills',
+  'Quests',
+  'Cosmetics',
+  'Utilities',
+  'Other',
+]);
+
+export type Category = z.infer<typeof categoryEnum>;
+
 const configs = defineCollection({
   loader: glob({ pattern: '**/index.md', base: './src/content/configs' }),
   schema: z.object({
@@ -8,6 +24,7 @@ const configs = defineCollection({
     plugin: z.string(),
     version: z.string(),
     minecraftVersion: z.string(),
+    category: categoryEnum,
     description: z.string(),
     lastUpdated: z.coerce.date(),
     files: z.array(z.object({

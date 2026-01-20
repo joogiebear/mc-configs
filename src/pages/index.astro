@@ -2,11 +2,16 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import ConfigCard from '../components/ConfigCard.astro';
+import FilterBar from '../components/FilterBar.astro';
 
 const configs = await getCollection('configs');
 
 // Sort by lastUpdated (most recent first)
 configs.sort((a, b) => b.data.lastUpdated.getTime() - a.data.lastUpdated.getTime());
+
+// Extract unique categories and MC versions for filters
+const categories = [...new Set(configs.map(c => c.data.category))].sort();
+const mcVersions = [...new Set(configs.map(c => c.data.minecraftVersion))].sort();
 ---
 
 <Layout title="Home">
@@ -18,20 +23,34 @@ configs.sort((a, b) => b.data.lastUpdated.getTime() - a.data.lastUpdated.getTime
   </div>
 
   {configs.length > 0 ? (
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {configs.map((config) => (
-        <ConfigCard
-          slug={config.id}
-          title={config.data.title}
-          plugin={config.data.plugin}
-          version={config.data.version}
-          minecraftVersion={config.data.minecraftVersion}
-          description={config.data.description}
-          lastUpdated={config.data.lastUpdated}
-          fileCount={config.data.files.length}
-        />
-      ))}
-    </div>
+    <>
+      <FilterBar categories={categories} mcVersions={mcVersions} />
+
+      <div id="configs-grid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {configs.map((config) => (
+          <ConfigCard
+            slug={config.id}
+            title={config.data.title}
+            plugin={config.data.plugin}
+            version={config.data.version}
+            minecraftVersion={config.data.minecraftVersion}
+            category={config.data.category}
+            description={config.data.description}
+            lastUpdated={config.data.lastUpdated}
+            fileCount={config.data.files.length}
+          />
+        ))}
+      </div>
+
+      <!-- No results message -->
+      <div id="no-results" class="hidden rounded-lg border border-zinc-800 bg-zinc-800/50 p-12 text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h3 class="mt-4 text-lg font-medium text-zinc-300">No configs found</h3>
+        <p class="mt-2 text-sm text-zinc-500">Try adjusting your search or filters.</p>
+      </div>
+    </>
   ) : (
     <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-12 text-center">
       <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,3 +61,132 @@ configs.sort((a, b) => b.data.lastUpdated.getTime() - a.data.lastUpdated.getTime
     </div>
   )}
 </Layout>
+
+<script>
+  // Filter and search functionality
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
+  const versionFilter = document.getElementById('version-filter') as HTMLSelectElement;
+  const sortFilter = document.getElementById('sort-filter') as HTMLSelectElement;
+  const clearFiltersBtn = document.getElementById('clear-filters');
+  const resultsCount = document.getElementById('results-count');
+  const configsGrid = document.getElementById('configs-grid');
+  const noResults = document.getElementById('no-results');
+
+  const cards = document.querySelectorAll('.config-card') as NodeListOf<HTMLElement>;
+  const totalConfigs = cards.length;
+
+  function updateResultsCount(visible: number) {
+    if (resultsCount) {
+      if (visible === totalConfigs) {
+        resultsCount.textContent = `Showing all ${totalConfigs} config${totalConfigs !== 1 ? 's' : ''}`;
+      } else {
+        resultsCount.textContent = `Showing ${visible} of ${totalConfigs} config${totalConfigs !== 1 ? 's' : ''}`;
+      }
+    }
+  }
+
+  function showClearButton(show: boolean) {
+    if (clearFiltersBtn) {
+      clearFiltersBtn.classList.toggle('hidden', !show);
+    }
+  }
+
+  function hasActiveFilters(): boolean {
+    return (
+      searchInput?.value !== '' ||
+      categoryFilter?.value !== '' ||
+      versionFilter?.value !== ''
+    );
+  }
+
+  function filterAndSort() {
+    const searchTerm = searchInput?.value.toLowerCase() || '';
+    const category = categoryFilter?.value || '';
+    const version = versionFilter?.value || '';
+    const sortBy = sortFilter?.value || 'newest';
+
+    let visibleCount = 0;
+    const visibleCards: HTMLElement[] = [];
+
+    cards.forEach((card) => {
+      const plugin = card.dataset.plugin || '';
+      const cardCategory = card.dataset.category || '';
+      const mcVersion = card.dataset.mcVersion || '';
+
+      const matchesSearch = plugin.includes(searchTerm);
+      const matchesCategory = !category || cardCategory === category;
+      const matchesVersion = !version || mcVersion === version;
+
+      const isVisible = matchesSearch && matchesCategory && matchesVersion;
+
+      if (isVisible) {
+        card.classList.remove('hidden');
+        visibleCards.push(card);
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Sort visible cards
+    visibleCards.sort((a, b) => {
+      const dateA = new Date(a.dataset.date || '').getTime();
+      const dateB = new Date(b.dataset.date || '').getTime();
+      const nameA = a.dataset.plugin || '';
+      const nameB = b.dataset.plugin || '';
+
+      switch (sortBy) {
+        case 'newest':
+          return dateB - dateA;
+        case 'oldest':
+          return dateA - dateB;
+        case 'name-asc':
+          return nameA.localeCompare(nameB);
+        case 'name-desc':
+          return nameB.localeCompare(nameA);
+        default:
+          return 0;
+      }
+    });
+
+    // Reorder DOM elements
+    if (configsGrid) {
+      visibleCards.forEach((card) => {
+        configsGrid.appendChild(card);
+      });
+    }
+
+    // Show/hide no results message
+    if (noResults && configsGrid) {
+      if (visibleCount === 0) {
+        configsGrid.classList.add('hidden');
+        noResults.classList.remove('hidden');
+      } else {
+        configsGrid.classList.remove('hidden');
+        noResults.classList.add('hidden');
+      }
+    }
+
+    updateResultsCount(visibleCount);
+    showClearButton(hasActiveFilters());
+  }
+
+  function clearFilters() {
+    if (searchInput) searchInput.value = '';
+    if (categoryFilter) categoryFilter.value = '';
+    if (versionFilter) versionFilter.value = '';
+    if (sortFilter) sortFilter.value = 'newest';
+    filterAndSort();
+  }
+
+  // Event listeners
+  searchInput?.addEventListener('input', filterAndSort);
+  categoryFilter?.addEventListener('change', filterAndSort);
+  versionFilter?.addEventListener('change', filterAndSort);
+  sortFilter?.addEventListener('change', filterAndSort);
+  clearFiltersBtn?.addEventListener('click', clearFilters);
+
+  // Initial count
+  updateResultsCount(totalConfigs);
+</script>

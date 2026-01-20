@@ -3,6 +3,7 @@ title: "TopMinion 3.0 Config"
 plugin: "TopMinion"
 version: "1.0.0"
 minecraftVersion: "1.20.x"
+category: "Minions"
 description: "Optimized minion configuration for TopMinion 3.0 with balanced settings for survival servers."
 lastUpdated: 2025-01-19
 files:
