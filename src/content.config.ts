@@ -3,6 +3,7 @@ import { glob } from 'astro/loaders';
 
 const categoryEnum = z.enum([
   'Economy',
+  'Items',
   'Minions',
   'Chat',
   'Permissions',
