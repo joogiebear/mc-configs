@@ -1,0 +1,139 @@
+# TopMinion EcoItems Hook Configuration
+# Place this in your EcoItems/items/ folder or merge with existing
+# Optimized by joogiebear
+
+# ============================================
+# MINION UPGRADE CRYSTALS
+# ============================================
+
+speed_crystal:
+  item: AMETHYST_SHARD
+  display-name: "&b&lSpeed Crystal"
+  lore:
+    - "&7A crystallized essence of swiftness"
+    - ""
+    - "&eUse: &fUpgrade minion speed"
+    - "&7Required: &f5 per upgrade"
+  custom-model-data: 10001
+  craftable: false
+
+range_crystal:
+  item: PRISMARINE_CRYSTALS
+  display-name: "&a&lRange Crystal"
+  lore:
+    - "&7Extends the reach of your minions"
+    - ""
+    - "&eUse: &fUpgrade minion range"
+    - "&7Required: &f5 per upgrade"
+  custom-model-data: 10002
+  craftable: false
+
+efficiency_crystal:
+  item: EMERALD
+  display-name: "&2&lEfficiency Crystal"
+  lore:
+    - "&7Enhances minion work output"
+    - ""
+    - "&eUse: &fUpgrade minion efficiency"
+    - "&7Required: &f10 per upgrade"
+  custom-model-data: 10003
+  craftable: false
+
+# ============================================
+# MINION DROP SHARDS
+# ============================================
+
+mining_shard:
+  item: COAL
+  display-name: "&8Mining Shard"
+  lore:
+    - "&7Dropped by mining minions"
+    - "&7Collect to craft upgrades"
+  custom-model-data: 10010
+  craftable: false
+
+farming_shard:
+  item: WHEAT_SEEDS
+  display-name: "&aFarming Shard"
+  lore:
+    - "&7Dropped by farming minions"
+    - "&7Collect to craft upgrades"
+  custom-model-data: 10011
+  craftable: false
+
+fishing_shard:
+  item: COD
+  display-name: "&bFishing Shard"
+  lore:
+    - "&7Dropped by fishing minions"
+    - "&7Collect to craft upgrades"
+  custom-model-data: 10012
+  craftable: false
+
+# ============================================
+# ESSENCE ITEMS
+# ============================================
+
+ore_essence:
+  item: REDSTONE
+  display-name: "&c&lOre Essence"
+  lore:
+    - "&7Rare drop from mining minions"
+    - "&7Used for advanced upgrades"
+  custom-model-data: 10020
+  craftable: false
+
+growth_essence:
+  item: LIME_DYE
+  display-name: "&a&lGrowth Essence"
+  lore:
+    - "&7Rare drop from farming minions"
+    - "&7Used for advanced upgrades"
+  custom-model-data: 10021
+  craftable: false
+
+aqua_essence:
+  item: LIGHT_BLUE_DYE
+  display-name: "&b&lAqua Essence"
+  lore:
+    - "&7Rare drop from fishing minions"
+    - "&7Used for advanced upgrades"
+  custom-model-data: 10022
+  craftable: false
+
+# ============================================
+# LEVEL REWARDS
+# ============================================
+
+minion_speed_boost:
+  item: FEATHER
+  display-name: "&e&lMinion Speed Boost"
+  lore:
+    - "&7Permanent speed increase"
+    - "&7for one minion"
+    - ""
+    - "&aReward: &fLevel 10"
+  custom-model-data: 10030
+  craftable: false
+
+minion_range_extender:
+  item: ENDER_PEARL
+  display-name: "&d&lRange Extender"
+  lore:
+    - "&7Permanently extends minion range"
+    - "&7by 2 blocks"
+    - ""
+    - "&aReward: &fLevel 25"
+  custom-model-data: 10031
+  craftable: false
+
+minion_mastery_token:
+  item: NETHER_STAR
+  display-name: "&6&l&kaa&r &6&lMastery Token &6&l&kaa"
+  lore:
+    - "&7Ultimate minion upgrade"
+    - "&7Doubles all minion output"
+    - ""
+    - "&aReward: &fLevel 50"
+  custom-model-data: 10032
+  craftable: false

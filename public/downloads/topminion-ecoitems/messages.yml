@@ -1,0 +1,50 @@
+# TopMinion 3.0 Messages
+# EcoItems Integration Version
+# Optimized by joogiebear
+
+messages:
+  no-permission: "&cYou don't have permission to do that!"
+  reload-success: "&aConfiguration reloaded successfully!"
+  player-only: "&cThis command can only be used by players!"
+
+  # Minion messages
+  minion-placed: "&aYou placed a &f{type} &aminion!"
+  minion-removed: "&eYou removed your minion."
+  minion-upgraded: "&aMinion upgraded to level &f{level}&a!"
+  minion-max-level: "&cThis minion is already at max level!"
+
+  # Limit messages
+  max-minions-reached: "&cYou've reached your maximum minion limit! &7({current}/{max})"
+  max-chunk-minions: "&cThis chunk has too many minions already!"
+
+  # EcoItems upgrade messages
+  upgrade-item-required: "&cYou need &f{amount}x {item} &cto upgrade!"
+  upgrade-success-ecoitem: "&aUpgraded using &f{amount}x {item}&a!"
+
+  # EcoItems drop messages
+  ecoitem-drop: "&a+1 &f{item} &7from minion!"
+
+  # Level reward messages
+  level-reward: "&6Level {level} reached! &aYou received &f{amount}x {item}&a!"
+
+  # Storage messages
+  minion-full: "&eYour minion's storage is full!"
+  collected-items: "&aCollected &f{amount} &aitems from your minion."
+
+  # Error messages
+  invalid-minion: "&cInvalid minion type!"
+  minion-not-found: "&cMinion not found!"
+  cannot-place-here: "&cYou cannot place a minion here!"
+  ecoitems-not-found: "&cEcoItems plugin not found! Integration disabled."
+
+gui:
+  main-menu: "&8Minion Menu"
+  upgrade-menu: "&8Upgrade Minion &7(EcoItems)"
+  storage-menu: "&8Minion Storage"
+  shop-menu: "&8Minion Shop"
+
+placeholders:
+  level: "Level {level}"
+  storage: "{current}/{max}"
+  speed: "{speed}x"
+  ecoitem-cost: "{amount}x {item}"

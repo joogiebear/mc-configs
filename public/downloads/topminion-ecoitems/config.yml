@@ -1,0 +1,110 @@
+# TopMinion 3.0 Configuration
+# EcoItems Integration Setup
+# Optimized by joogiebear
+
+settings:
+  prefix: "&8[&aMinions&8] &7"
+  debug: false
+
+  # Performance settings
+  update-interval: 20
+  max-minions-per-player: 10
+  max-minions-per-chunk: 5
+
+  # Storage
+  storage-type: YAML
+  auto-save-interval: 300
+
+# EcoItems Integration
+integrations:
+  ecoitems:
+    enabled: true
+    use-custom-drops: true
+    use-custom-upgrades: true
+
+minion-settings:
+  default-speed: 1.0
+  default-range: 5
+
+  # Leveling with EcoItems rewards
+  enable-leveling: true
+  max-level: 50
+  xp-per-action: 1
+
+  # Level milestones give EcoItems
+  level-rewards:
+    10:
+      ecoitem: "minion_speed_boost"
+      amount: 1
+    25:
+      ecoitem: "minion_range_extender"
+      amount: 1
+    50:
+      ecoitem: "minion_mastery_token"
+      amount: 1
+
+  # Upgrades cost EcoItems instead of money
+  upgrade-system: ECOITEMS
+  upgrade-items:
+    speed:
+      item: "speed_crystal"
+      amount: 5
+    range:
+      item: "range_crystal"
+      amount: 5
+    efficiency:
+      item: "efficiency_crystal"
+      amount: 10
+
+resource-settings:
+  mining:
+    enabled: true
+    blocks:
+      - STONE
+      - COBBLESTONE
+      - COAL_ORE
+      - IRON_ORE
+      - GOLD_ORE
+      - DIAMOND_ORE
+    cooldown: 60
+    # EcoItems bonus drops
+    ecoitem-drops:
+      enabled: true
+      chance: 0.05
+      items:
+        - "mining_shard"
+        - "ore_essence"
+
+  farming:
+    enabled: true
+    crops:
+      - WHEAT
+      - CARROTS
+      - POTATOES
+      - BEETROOTS
+    cooldown: 40
+    auto-replant: true
+    ecoitem-drops:
+      enabled: true
+      chance: 0.08
+      items:
+        - "farming_shard"
+        - "growth_essence"
+
+  fishing:
+    enabled: true
+    cooldown: 100
+    treasure-chance: 0.05
+    ecoitem-drops:
+      enabled: true
+      chance: 0.10
+      items:
+        - "fishing_shard"
+        - "aqua_essence"
+
+world-settings:
+  enabled-worlds:
+    - world
+    - world_nether
+    - world_the_end
+  disabled-regions: []
