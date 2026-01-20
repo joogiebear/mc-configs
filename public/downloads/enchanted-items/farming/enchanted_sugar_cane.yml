@@ -1,0 +1,26 @@
+item:
+  item: sugar_cane unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Sugar Cane"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "SUGAR.CANE.8"
+  recipe:
+    - ""
+    - ecoitems:enchanted_sugar 32
+    - ""
+    - ecoitems:enchanted_sugar 32
+    - ecoitems:enchanted_sugar 32
+    - ecoitems:enchanted_sugar 32
+    - ""
+    - ecoitems:enchanted_sugar 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

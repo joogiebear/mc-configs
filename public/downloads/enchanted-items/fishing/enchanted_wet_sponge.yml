@@ -1,0 +1,26 @@
+item:
+  item: wet_sponge unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Wet Sponge"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "SPONGE.7"
+  recipe:
+    - ""
+    - ecoitems:enchanted_sponge 8
+    - ""
+    - ecoitems:enchanted_sponge 8
+    - ecoitems:enchanted_sponge 8
+    - ecoitems:enchanted_sponge 8
+    - ""
+    - ecoitems:enchanted_sponge 8
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

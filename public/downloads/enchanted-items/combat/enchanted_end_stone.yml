@@ -1,0 +1,26 @@
+item:
+  item: end_stone unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Endstone"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "ENDERMAN.5" #END.STONE.4"
+  recipe:
+    - ""
+    - end_stone 32
+    - ""
+    - end_stone 32
+    - end_stone 32
+    - end_stone 32
+    - ""
+    - end_stone 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

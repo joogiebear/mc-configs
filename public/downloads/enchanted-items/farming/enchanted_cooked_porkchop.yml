@@ -1,0 +1,26 @@
+item:
+  item: cooked_porkchop unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Cooked Porkchop"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "PORKCHOP.7"
+  recipe:
+    - ""
+    - ecoitems:enchanted_porkchop 32
+    - ""
+    - ecoitems:enchanted_porkchop 32
+    - ecoitems:enchanted_porkchop 32
+    - ecoitems:enchanted_porkchop 32
+    - ""
+    - ecoitems:enchanted_porkchop 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

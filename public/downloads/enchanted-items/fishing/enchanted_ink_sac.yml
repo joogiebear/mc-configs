@@ -1,0 +1,26 @@
+item:
+  item: ink_sac unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Ink Sac"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "INK.SAC.3"
+  recipe:
+    - ""
+    - ink_sac 16
+    - ""
+    - ink_sac 16
+    - ink_sac 16
+    - ink_sac 16
+    - ""
+    - ink_sac 16
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

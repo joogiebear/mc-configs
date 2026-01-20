@@ -1,0 +1,25 @@
+item:
+  item: enchanted_book unbreakable ender_slayer:1 hide_attributes hide_unbreakable
+  displayName: "&fEnchanted Book"
+  effectiveDurability: 4096
+  lore:
+    - ""
+    - "&7Use this book"
+    - "&7to enchant your items"
+    - ""
+    - "&3&lENCHANTED BOOK" 
+  craftable: true
+  craftingPermission: ENDERMAN.3
+  recipe:
+    - iron_sword
+    - ""
+    - ""
+    - ""
+    - paper 8
+    - paper 8
+    - ""
+    - paper 8
+    - ecoitems:enchanted_ender_pearl
+
+baseDamage: 1
+baseAttackSpeed: 1

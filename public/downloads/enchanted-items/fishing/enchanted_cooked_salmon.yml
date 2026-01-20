@@ -1,0 +1,26 @@
+item:
+  item: cooked_salmon unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Cooked Salmon"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "SALMON.8"
+  recipe:
+    - ""
+    - ecoitems:enchanted_raw_salmon 32
+    - ""
+    - ecoitems:enchanted_raw_salmon 32
+    - ecoitems:enchanted_raw_salmon 32
+    - ecoitems:enchanted_raw_salmon 32
+    - ""
+    - ecoitems:enchanted_raw_salmon 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

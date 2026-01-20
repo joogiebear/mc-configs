@@ -1,0 +1,26 @@
+item:
+  item: oak_log unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Oak Log"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "OAK.6"
+  recipe:
+    - ""
+    - oak_log 32
+    - ""
+    - oak_log 32
+    - oak_log 32
+    - oak_log 32
+    - ""
+    - oak_log 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

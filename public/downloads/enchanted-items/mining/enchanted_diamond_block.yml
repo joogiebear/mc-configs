@@ -1,0 +1,26 @@
+item:
+  item: diamond_block unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Diamond Block"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "DIAMOND.8"
+  recipe:
+    - ""
+    - ecoitems:enchanted_diamond 32
+    - ""
+    - ecoitems:enchanted_diamond 32
+    - ecoitems:enchanted_diamond 32
+    - ecoitems:enchanted_diamond 32
+    - ""
+    - ecoitems:enchanted_diamond 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

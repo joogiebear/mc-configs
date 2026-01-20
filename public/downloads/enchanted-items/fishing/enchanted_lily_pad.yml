@@ -1,0 +1,26 @@
+item:
+  item: lily_pad unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Lily Pad"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "LILY.PAD.4"
+  recipe:
+    - ""
+    - lily_pad 32
+    - ""
+    - lily_pad 32
+    - lily_pad 32
+    - lily_pad 32
+    - ""
+    - lily_pad 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

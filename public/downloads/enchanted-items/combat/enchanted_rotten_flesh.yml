@@ -1,0 +1,26 @@
+item:
+  item: rotten_flesh unbreaking:1 hide_enchants hide_attributes
+  displayName: "&fEnchanted Rotten Flesh"
+  lore: 
+    - ""
+    - "&f&lCOMMON"
+  craftable: true
+  craftingPermission: "ROTTEN.FLESH.4"
+  recipe:
+    - ""
+    - rotten_flesh 32
+    - ""
+    - rotten_flesh 32
+    - rotten_flesh 32
+    - rotten_flesh 32
+    - ""
+    - rotten_flesh 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

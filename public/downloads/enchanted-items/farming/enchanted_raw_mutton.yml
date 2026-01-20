@@ -1,0 +1,26 @@
+item:
+  item: mutton unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Raw Mutton"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "MUTTON.5"
+  recipe:
+    - ""
+    - mutton 32
+    - ""
+    - mutton 32
+    - mutton 32
+    - mutton 32
+    - ""
+    - mutton 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

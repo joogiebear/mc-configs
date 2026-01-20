@@ -1,0 +1,26 @@
+item:
+  item: melon unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Melon Block"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "MELON.6"
+  recipe:
+    - ""
+    - ecoitems:enchanted_melon_slice 32
+    - ""
+    - ecoitems:enchanted_melon_slice 32
+    - ecoitems:enchanted_melon_slice 32
+    - ecoitems:enchanted_melon_slice 32
+    - ""
+    - ecoitems:enchanted_melon_slice 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

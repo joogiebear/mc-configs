@@ -1,0 +1,26 @@
+item:
+  item: gold_block unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Gold Block"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "GOLD.8"
+  recipe:
+    - ""
+    - ecoitems:enchanted_gold_block 32
+    - ""
+    - ecoitems:enchanted_gold_block 32
+    - ecoitems:enchanted_gold_block 32
+    - ecoitems:enchanted_gold_block 32
+    - ""
+    - ecoitems:enchanted_gold_block 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

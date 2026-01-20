@@ -1,0 +1,25 @@
+item:
+  item: enchanted_book unbreakable auto_smelt:1 hide_attributes hide_unbreakable
+  displayName: "&fEnchanted Book"
+  effectiveDurability: 4096
+  lore:
+    - ""
+    - "&7Use this book"
+    - "&7to enchant your items"
+    - ""
+    - "&3&lENCHANTED BOOK" 
+  craftable: true
+  craftingPermission: COAL.2
+  recipe:
+    - ""
+    - ""
+    - ""
+    - ""
+    - paper 1
+    - paper 1
+    - ""
+    - paper 1
+    - coal_block 5
+
+baseDamage: 1
+baseAttackSpeed: 1

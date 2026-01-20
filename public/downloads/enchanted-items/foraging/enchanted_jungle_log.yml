@@ -1,0 +1,26 @@
+item:
+  item: jungle_log unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Jungle Log"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "JUNGLE.4"
+  recipe:
+    - ""
+    - jungle_log 32
+    - ""
+    - jungle_log 32
+    - jungle_log 32
+    - jungle_log 32
+    - ""
+    - jungle_log 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: cod unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Cod"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "COD.6"
+  recipe:
+    - ""
+    - cod 32
+    - ""
+    - cod 32
+    - cod 32
+    - cod 32
+    - ""
+    - cod 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

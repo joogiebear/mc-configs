@@ -1,0 +1,26 @@
+item:
+  item: firework_rocket unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Firework Rocket"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "GUNPOWDER.7"
+  recipe:
+    - ""
+    - ecoitems:enchanted_gunpowder 16
+    - ""
+    - ecoitems:enchanted_gunpowder 16
+    - paper 16
+    - ecoitems:enchanted_gunpowder 16
+    - ""
+    - ecoitems:enchanted_gunpowder 16
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

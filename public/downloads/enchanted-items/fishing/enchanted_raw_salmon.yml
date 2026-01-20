@@ -1,0 +1,26 @@
+item:
+  item: salmon unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Raw Salmon"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "SALMON.4"
+  recipe:
+    - ""
+    - salmon 32
+    - ""
+    - salmon 32
+    - salmon 32
+    - salmon 32
+    - ""
+    - salmon 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

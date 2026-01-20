@@ -1,0 +1,25 @@
+item:
+  item: enchanted_book unbreakable fortune:1 hide_attributes hide_unbreakable
+  displayName: "&fEnchanted Book"
+  effectiveDurability: 4096
+  lore:
+    - ""
+    - "&7Use this book"
+    - "&7to enchant your items"
+    - ""
+    - "&3&lENCHANTED BOOK" 
+  craftable: true
+  craftingPermission: GRAVEL.6
+  recipe:
+    - ""
+    - ""
+    - ""
+    - ""
+    - paper 2
+    - paper 2
+    - ""
+    - paper 2
+    - gravel 32
+
+baseDamage: 1
+baseAttackSpeed: 1

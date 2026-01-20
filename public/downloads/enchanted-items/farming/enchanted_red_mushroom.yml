@@ -1,0 +1,26 @@
+item:
+  item: red_mushroom unbreaking:1 hide_enchants hide_attributes
+  displayName: "&fEnchanted Red Mushroom"
+  lore: 
+    - ""
+    - "&f&lCOMMON"
+  craftable: true
+  craftingPermission: "MUSHROOM.3"
+  recipe:
+    - ""
+    - red_mushroom 32
+    - ""
+    - red_mushroom 32
+    - red_mushroom 32
+    - red_mushroom 32
+    - ""
+    - red_mushroom 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

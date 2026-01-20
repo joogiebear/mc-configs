@@ -1,0 +1,27 @@
+item:
+  item: bread unbreaking:1 hide_enchants hide_attributes
+  displayName: "&fEnchanted Bread"
+  lore: 
+    - ""
+    - "&f&lCOMMON"
+  craftable: true
+  craftingPermission: "WHEAT.5"
+  recipe:
+    - ""
+    - ""
+    - ""
+    - wheat 10
+    - wheat 10
+    - wheat 10
+    - wheat 10
+    - wheat 10
+    - wheat 10
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: charcoal unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Charcoal"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "COAL.5"
+  recipe:
+    - coal 32
+    - coal 32
+    - coal 32
+    - coal 32
+    - oak_log 32 || jungle_log 32 || dark_oak_log 32 || birch_log 32 || acacia_log 32 || spruce_log 32
+    - coal 32
+    - coal 32
+    - coal 32
+    - coal 32
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

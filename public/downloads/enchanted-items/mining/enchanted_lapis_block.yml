@@ -1,0 +1,26 @@
+item:
+  item: lapis_block unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Lapis Block"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "LAPIS.7"
+  recipe:
+    - ""
+    - ecoitems:enchanted_lapis_block 32
+    - ""
+    - ecoitems:enchanted_lapis_block 32
+    - ecoitems:enchanted_lapis_block 32
+    - ecoitems:enchanted_lapis_block 32
+    - ""
+    - ecoitems:enchanted_lapis_block 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

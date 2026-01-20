@@ -1,0 +1,26 @@
+item:
+  item: rabbit_hide unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Rabbit Hide"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "RABBIT.6"
+  recipe:
+    - rabbit_hide 64
+    - rabbit_hide 64
+    - rabbit_hide 64
+    - rabbit_hide 64
+    - rabbit_hide 64
+    - rabbit_hide 64
+    - rabbit_hide 64
+    - rabbit_hide 64
+    - rabbit_hide 64
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

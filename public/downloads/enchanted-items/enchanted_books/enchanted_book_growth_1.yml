@@ -1,0 +1,25 @@
+item:
+  item: enchanted_book unbreakable growth:1 hide_attributes hide_unbreakable
+  displayName: "&fEnchanted Book"
+  effectiveDurability: 4096
+  lore:
+    - ""
+    - "&7Use this book"
+    - "&7to enchant your items"
+    - ""
+    - "&3&lENCHANTED BOOK" 
+  craftable: true
+  craftingPermission: DARK.OAK.7
+  recipe:
+    - ""
+    - ""
+    - ""
+    - ""
+    - paper 8
+    - paper 8
+    - ""
+    - paper 8
+    - ecoitems:enchanted_dark_oak_log 8
+
+baseDamage: 1
+baseAttackSpeed: 1

@@ -1,0 +1,26 @@
+item:
+  item: fermented_spider_eye unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Fermented Spider Eye"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "SPIDER.EYE.7"
+  recipe:
+    - ""
+    - brown_mushroom 64
+    - ""
+    - ""
+    - sugar 64
+    - ""
+    - ""
+    - ecoitems:enchanted_spider_eye 64
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: rabbit_foot unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Rabbit Foot"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "RABBIT.4"
+  recipe:
+    - ""
+    - rabbit_foot 32
+    - ""
+    - rabbit_foot 32
+    - rabbit_foot 32
+    - rabbit_foot 32
+    - ""
+    - rabbit_foot 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

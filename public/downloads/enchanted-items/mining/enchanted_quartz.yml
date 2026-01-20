@@ -1,0 +1,26 @@
+item:
+  item: quartz unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Quartz"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "QUARTZ.4"
+  recipe:
+    - ""
+    - quartz 32
+    - ""
+    - quartz 32
+    - quartz 32
+    - quartz 32
+    - ""
+    - quartz 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ] 

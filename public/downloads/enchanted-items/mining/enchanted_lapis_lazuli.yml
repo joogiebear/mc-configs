@@ -1,0 +1,26 @@
+item:
+  item: lapis_lazuli unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Lapis Lazuli"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "LAPIS.4"
+  recipe:
+    - ""
+    - lapis_lazuli 32
+    - ""
+    - lapis_lazuli 32
+    - lapis_lazuli 32
+    - lapis_lazuli 32
+    - ""
+    - lapis_lazuli 32
+    - ""
+    
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

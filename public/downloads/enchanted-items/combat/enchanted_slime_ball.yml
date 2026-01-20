@@ -1,0 +1,26 @@
+item:
+  item: slime_ball unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Slime Ball"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "SLIME.5"
+  recipe:
+    - ""
+    - slime_ball 32
+    - ""
+    - slime_ball 32
+    - slime_ball 32
+    - slime_ball 32
+    - ""
+    - slime_ball 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

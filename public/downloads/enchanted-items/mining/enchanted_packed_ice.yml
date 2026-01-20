@@ -1,0 +1,26 @@
+item:
+  item: packed_ice unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Packed Ice"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "ICE.7"
+  recipe:
+    - ""
+    - ecoitems:enchanted_ice 32
+    - ""
+    - ecoitems:enchanted_ice 32
+    - ecoitems:enchanted_ice 32
+    - ecoitems:enchanted_ice 32
+    - ""
+    - ecoitems:enchanted_ice 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

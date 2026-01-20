@@ -1,0 +1,25 @@
+item:
+  item: enchanted_book unbreakable magnet:1 hide_attributes hide_unbreakable
+  displayName: "&fEnchanted Book"
+  effectiveDurability: 4096
+  lore:
+    - ""
+    - "&7Use this book"
+    - "&7to enchant your items"
+    - ""
+    - "&3&lENCHANTED BOOK" 
+  craftable: true
+  craftingPermission: TROPICAL.FISH.3
+  recipe:
+    - nether_quartz 8
+    - ""
+    - ""
+    - ""
+    - paper 8
+    - paper 8
+    - ""
+    - paper 8
+    - clown_fish 8
+
+baseDamage: 1
+baseAttackSpeed: 1

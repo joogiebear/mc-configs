@@ -1,0 +1,26 @@
+item:
+  item: gold_ingot unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Gold Ingot"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "GOLD.5"
+  recipe:
+    - ""
+    - gold_ingot 32
+    - ""
+    - gold_ingot 32
+    - gold_ingot 32
+    - gold_ingot 32
+    - ""
+    - gold_ingot 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

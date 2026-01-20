@@ -1,0 +1,26 @@
+item:
+  item: cake unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted cake"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "CHICKEN.7"
+  recipe:
+    - milk_bucket
+    - milk_bucket
+    - milk_bucket
+    - ecoitems:enchanted_sugar
+    - ecoitems:enchanted_egg
+    - ecoitems:enchanted_sugar
+    - wheat
+    - wheat
+    - wheat
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

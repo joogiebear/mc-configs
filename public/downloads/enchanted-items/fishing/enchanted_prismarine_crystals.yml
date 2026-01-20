@@ -1,0 +1,26 @@
+item:
+  item: prismarine_crystals unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchantedPrismarine Crystals"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "PRISMARINE.CRYSTALS.3"
+  recipe:
+    - ""
+    - prismarine_crystals 16
+    - ""
+    - prismarine_crystals 16
+    - prismarine_crystals 16
+    - prismarine_crystals 16
+    - ""
+    - prismarine_crystals 16
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

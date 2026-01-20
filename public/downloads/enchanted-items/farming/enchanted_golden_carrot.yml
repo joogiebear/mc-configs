@@ -1,0 +1,26 @@
+item:
+  item: golden_carrot unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Golden Carrot"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "CARROT.7"
+  recipe:
+    - ""
+    - ecoitems:enchanted_carrot 32
+    - ""
+    - ecoitems:enchanted_carrot 32
+    - golden_carrot 32
+    - ecoitems:enchanted_carrot 32
+    - ""
+    - ecoitems:enchanted_carrot 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

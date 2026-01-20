@@ -1,0 +1,26 @@
+item:
+  item: wheat_seeds unbreaking:1 hide_enchants hide_attributes
+  displayName: "&fEnchanted Wheat Seeds"
+  lore: 
+    - ""
+    - "&f&lCOMMON"
+  craftable: true
+  craftingPermission: "WHEAT.3"
+  recipe:
+    - ""
+    - wheat_seeds 32
+    - ""
+    - wheat_seeds 32
+    - wheat_seeds 32
+    - wheat_seeds 32
+    - ""
+    - wheat_seeds 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

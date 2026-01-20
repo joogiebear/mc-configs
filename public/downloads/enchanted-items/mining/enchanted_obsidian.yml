@@ -1,0 +1,26 @@
+item:
+  item: obsidian unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Obsidian"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "OBSIDIAN.4"
+  recipe:
+    - ""
+    - obsidian 32
+    - ""
+    - obsidian 32
+    - obsidian 32
+    - obsidian 32
+    - ""
+    - obsidian 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

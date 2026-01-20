@@ -1,0 +1,26 @@
+item:
+  item: bone_block unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Bone Block"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "BONE.10"
+  recipe:
+    - ""
+    - ecoitems:enchanted_bone 32
+    - ""
+    - ecoitems:enchanted_bone 32
+    - ecoitems:enchanted_bone 32
+    - ecoitems:enchanted_bone 32
+    - ""
+    - ecoitems:enchanted_bone 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

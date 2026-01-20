@@ -1,0 +1,26 @@
+item:
+  item: hay_block unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Hay Bale"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "WHEAT.2"
+  recipe:
+    - hay_block 16
+    - hay_block 16
+    - hay_block 16
+    - hay_block 16
+    - hay_block 16
+    - hay_block 16
+    - hay_block 16
+    - hay_block 16
+    - hay_block 16
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

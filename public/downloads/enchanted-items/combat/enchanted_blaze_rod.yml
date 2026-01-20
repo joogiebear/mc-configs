@@ -1,0 +1,26 @@
+item:
+  item: blaze_rod unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Blaze Rod"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "BLAZE.6"
+  recipe:
+    - ""
+    - ecoitems:enchanted_blaze_powder 32
+    - ""
+    - ecoitems:enchanted_blaze_powder 32
+    - ecoitems:enchanted_blaze_powder 32
+    - ecoitems:enchanted_blaze_powder 32
+    - ""
+    - ecoitems:enchanted_blaze_powder 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

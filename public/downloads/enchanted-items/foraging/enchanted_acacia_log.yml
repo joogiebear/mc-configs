@@ -1,0 +1,26 @@
+item:
+  item: acacia_log unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Acacia Log"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "ACACIA.4"
+  recipe:
+    - ""
+    - acacia_log 32
+    - ""
+    - acacia_log 32
+    - acacia_log 32
+    - acacia_log 32
+    - ""
+    - acacia_log 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: lava_bucket unbreaking:1 hide_enchants hide_attributes
+  displayName: "&5Enchanted Lava Bucket"
+  lore: 
+    - ""
+    - "&5&lEPIC"
+  craftable: true
+  craftingPermission: "COAL.8"
+  recipe:
+    - ""
+    - ""
+    - ""
+    - ecoitems:enchanted_iron_ingot
+    - ecoitems:enchanted_coal_block
+    - ecoitems:enchanted_iron_ingot
+    - ""
+    - ecoitems:enchanted_iron_ingot
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

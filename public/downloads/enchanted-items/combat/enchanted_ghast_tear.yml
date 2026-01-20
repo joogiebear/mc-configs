@@ -1,0 +1,26 @@
+item:
+  item: ghast_tear unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Ghast Tear"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "Ghast.3"
+  recipe:
+    - ""
+    - ghast_tear 8
+    - ""
+    - ghast_tear 8
+    - ghast_tear 8
+    - ghast_tear 8
+    - ""
+    - ghast_tear 8
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

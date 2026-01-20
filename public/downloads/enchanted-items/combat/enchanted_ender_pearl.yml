@@ -1,0 +1,26 @@
+item:
+  item: ender_pearl unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Ender Pearl"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "ENDERMAN.2"
+  recipe:
+    - ""
+    - ender_pearl 4
+    - ""
+    - ender_pearl 4
+    - ender_pearl 4
+    - ender_pearl 4
+    - ""
+    - ender_pearl 4
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: dark_oak_log unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Dark Oak Log"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "DARK.OAK.5"
+  recipe:
+    - ""
+    - dark_oak_log 32
+    - ""
+    - dark_oak_log 32
+    - dark_oak_log 32
+    - dark_oak_log 32
+    - ""
+    - dark_oak_log 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

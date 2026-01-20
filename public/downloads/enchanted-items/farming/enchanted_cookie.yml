@@ -1,0 +1,26 @@
+item:
+  item: cookie unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Cookie"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "COCOA.BEANS.6"
+  recipe:
+    - ""
+    - ecoitems:enchanted_cocoa_beans 32
+    - ""
+    - ecoitems:enchanted_cocoa_beans 32
+    - wheat 32
+    - ecoitems:enchanted_cocoa_beans 32
+    - ""
+    - ecoitems:enchanted_cocoa_beans 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

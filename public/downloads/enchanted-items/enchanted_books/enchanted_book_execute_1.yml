@@ -1,0 +1,25 @@
+item:
+  item: enchanted_book unbreakable execute:1 hide_attributes hide_unbreakable
+  displayName: "&fEnchanted Book"
+  effectiveDurability: 4096
+  lore:
+    - ""
+    - "&7Use this book"
+    - "&7to enchant your items"
+    - ""
+    - "&3&lENCHANTED BOOK" 
+  craftable: true
+  craftingPermission: DIAMOND.2
+  recipe:
+    - flint 40
+    - ""
+    - ""
+    - ""
+    - paper 8
+    - paper 8
+    - ""
+    - paper 8
+    - diamond 40
+
+baseDamage: 1
+baseAttackSpeed: 1

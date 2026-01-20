@@ -1,0 +1,26 @@
+item:
+  item: carrot unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Carrot"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: false
+  craftingPermission: "CARROT.4"
+  recipe:
+    - ""
+    - carrot 32
+    - ""
+    - carrot 32
+    - carrot 32
+    - carrot 32
+    - ""
+    - carrot 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

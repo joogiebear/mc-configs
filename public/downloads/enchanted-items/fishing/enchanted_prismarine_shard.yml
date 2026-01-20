@@ -1,0 +1,26 @@
+item:
+  item: prismarine_shard unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Prismarine Shard"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "PRISMARINE.SHARD.3"
+  recipe:
+    - ""
+    - prismarine_shard 16
+    - ""
+    - prismarine_shard 16
+    - prismarine_shard 16
+    - prismarine_shard 16
+    - ""
+    - prismarine_shard 16
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

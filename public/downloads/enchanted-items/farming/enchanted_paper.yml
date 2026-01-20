@@ -1,0 +1,26 @@
+item:
+  item: paper unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Paper"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "SUGAR.CANE.5"
+  recipe:
+    - paper 64
+    - ""
+    - ""
+    - ""
+    - paper 64
+    - ""
+    - ""
+    - ""
+    - paper 64
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: redstone unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Redstone Dust"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "REDSTONE.4"
+  recipe:
+    - ""
+    - redstone 32
+    - ""
+    - redstone 32
+    - redstone 32
+    - redstone 32
+    - ""
+    - redstone 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

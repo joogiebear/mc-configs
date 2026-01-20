@@ -1,0 +1,26 @@
+item:
+  item: iron_block unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Iron Block"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "IRON.7"
+  recipe:
+    - ""
+    - ecoitems:enchanted_iron_ingot 32
+    - ""
+    - ecoitems:enchanted_iron_ingot 32
+    - ecoitems:enchanted_iron_ingot 32
+    - ecoitems:enchanted_iron_ingot 32
+    - ""
+    - ecoitems:enchanted_iron_ingot 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

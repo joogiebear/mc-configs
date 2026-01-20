@@ -1,0 +1,26 @@
+item:
+  item: bone unbreaking:1 hide_enchants hide_attributes
+  displayName: "&fEnchanted Bone"
+  lore: 
+    - ""
+    - "&f&lCOMMON"
+  craftable: true
+  craftingPermission: "BONE.5"
+  recipe:
+    - ""
+    - bone 32
+    - ""
+    - bone 32
+    - bone 32
+    - bone 32
+    - ""
+    - bone 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

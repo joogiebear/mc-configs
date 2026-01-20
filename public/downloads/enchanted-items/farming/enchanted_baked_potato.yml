@@ -1,0 +1,26 @@
+item:
+  item: baked_potato unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Baked Potato"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "POTATO.7"
+  recipe:
+    - ""
+    - ecoitems:enchanted_potato 32
+    - ""
+    - ecoitems:enchanted_potato 32
+    - ecoitems:enchanted_potato 32
+    - ecoitems:enchanted_potato 32
+    - ""
+    - ecoitems:enchanted_potato 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

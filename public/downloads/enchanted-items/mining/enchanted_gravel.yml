@@ -1,0 +1,26 @@
+item:
+  item: gravel unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Gravel"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "GRAVRL.7"
+  recipe:
+    - ""
+    - gravel 32
+    - ""
+    - gravel 32
+    - gravel 32
+    - gravel 32
+    - ""
+    - gravel 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

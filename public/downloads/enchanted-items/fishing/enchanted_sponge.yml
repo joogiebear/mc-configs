@@ -1,0 +1,26 @@
+item:
+  item: sponge unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Sponge"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "SPONGE.3"
+  recipe:
+    - ""
+    - sponge 8
+    - ""
+    - sponge 8
+    - sponge 8
+    - sponge 8
+    - ""
+    - sponge 8
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,25 @@
+item:
+  item: enchanted_book unbreakable flame:1 hide_attributes hide_unbreakable
+  displayName: "&fEnchanted Book"
+  effectiveDurability: 4096
+  lore:
+    - ""
+    - "&7Use this book"
+    - "&7to enchant your items"
+    - ""
+    - "&3&lENCHANTED BOOK" 
+  craftable: true
+  craftingPermission: BONE.3
+  recipe:
+    - ""
+    - ""
+    - ""
+    - ""
+    - paper 8
+    - paper 8
+    - ""
+    - paper 8
+    - bone 40
+
+baseDamage: 1
+baseAttackSpeed: 1

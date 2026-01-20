@@ -1,0 +1,26 @@
+item:
+  item: clay_ball unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Clay"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "CLAY.2"
+  recipe:
+    - ""
+    - clay 32
+    - ""
+    - clay 32
+    - clay 32
+    - clay 32
+    - ""
+    - clay 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

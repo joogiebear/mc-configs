@@ -1,0 +1,25 @@
+item:
+  item: enchanted_book unbreakable frost_walker:1 hide_attributes hide_unbreakable
+  displayName: "&fEnchanted Book"
+  effectiveDurability: 4096
+  lore:
+    - ""
+    - "&7Use this book"
+    - "&7to enchant your items"
+    - ""
+    - "&3&lENCHANTED BOOK" 
+  craftable: true
+  craftingPermission: ICE.2
+  recipe:
+    - ""
+    - ""
+    - ""
+    - ""
+    - paper
+    - paper
+    - ""
+    - paper
+    - ice
+
+baseDamage: 1
+baseAttackSpeed: 1

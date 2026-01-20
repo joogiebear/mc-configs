@@ -1,0 +1,26 @@
+item:
+  item: spruce_log unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Spruce Log"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "SPRUCE.5"
+  recipe:
+    - ""
+    - spruce_log 32
+    - ""
+    - spruce_log 32
+    - spruce_log 32
+    - spruce_log 32
+    - ""
+    - spruce_log 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

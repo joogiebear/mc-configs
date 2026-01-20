@@ -1,0 +1,26 @@
+item:
+  item: feather unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Feather"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "FEATHER.5"
+  recipe:
+    - ""
+    - feather 32
+    - ""
+    - feather 32
+    - feather 32
+    - feather 32
+    - ""
+    - feather 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: chicken unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Raw Chicken"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "CHICKEN.4"
+  recipe:
+    - ""
+    - chicken 32
+    - ""
+    - chicken 32
+    - chicken 32
+    - chicken 32
+    - ""
+    - chicken 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: leather unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Leather"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "LEATHER.6"
+  recipe:
+    - leather 32
+    - leather 32
+    - leather 32
+    - leather 32
+    - leather 32
+    - leather 32
+    - leather 32
+    - leather 32
+    - leather 32
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

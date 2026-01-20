@@ -1,0 +1,26 @@
+item:
+  item: pufferfish unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Pufferfish"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "PUFFERFISH.2"
+  recipe:
+    - ""
+    - pufferfish 32
+    - ""
+    - pufferfish 32
+    - pufferfish 32
+    - pufferfish 32
+    - ""
+    - pufferfish 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

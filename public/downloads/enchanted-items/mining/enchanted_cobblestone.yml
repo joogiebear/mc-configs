@@ -1,0 +1,26 @@
+item:
+  item: cobblestone unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Cobblestone"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "COBBLESTONE.4"
+  recipe:
+    - ""
+    - cobblestone 32
+    - ""
+    - cobblestone 32
+    - cobblestone 32
+    - cobblestone 32
+    - ""
+    - cobblestone 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

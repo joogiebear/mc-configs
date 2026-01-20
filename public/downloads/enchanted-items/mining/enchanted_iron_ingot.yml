@@ -1,0 +1,26 @@
+item:
+  item: iron_ingot unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Iron Ingot"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "IRON.4"
+  recipe:
+    - ""
+    - iron_ingot 32
+    - ""
+    - iron_ingot 32
+    - iron_ingot 32
+    - iron_ingot 32
+    - ""
+    - iron_ingot 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

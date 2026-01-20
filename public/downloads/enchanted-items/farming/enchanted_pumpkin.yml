@@ -1,0 +1,26 @@
+item:
+  item: jack_o_lantern unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Pumpkin"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "PUMPKIN.3"
+  recipe:
+    - ""
+    - pumpkin 32
+    - ""
+    - pumpkin 32
+    - pumpkin 32
+    - pumpkin 32
+    - ""
+    - pumpkin 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

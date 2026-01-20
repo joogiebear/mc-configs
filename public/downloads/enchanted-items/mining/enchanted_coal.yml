@@ -1,0 +1,26 @@
+item:
+  item: coal unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Coal"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "COAL.4"
+  recipe:
+    - ""
+    - coal 32
+    - ""
+    - coal 32
+    - coal 32
+    - coal 32
+    - ""
+    - coal 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

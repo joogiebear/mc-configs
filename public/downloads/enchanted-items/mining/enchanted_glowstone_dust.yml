@@ -1,0 +1,26 @@
+item:
+  item: glowstone_dust unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Glowstone Dust"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "GLOWSTONE.3"
+  recipe:
+    - ""
+    - glowstone_dust 32
+    - ""
+    - glowstone_dust 32
+    - glowstone_dust 32
+    - glowstone_dust 32
+    - ""
+    - glowstone_dust 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

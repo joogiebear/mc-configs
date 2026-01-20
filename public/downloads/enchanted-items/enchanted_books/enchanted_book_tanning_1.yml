@@ -1,0 +1,25 @@
+item:
+  item: enchanted_book unbreakable tanning:1 hide_attributes hide_unbreakable
+  displayName: "&fEnchanted Book"
+  effectiveDurability: 4096
+  lore:
+    - ""
+    - "&7Use this book"
+    - "&7to enchant your items"
+    - ""
+    - "&3&lENCHANTED BOOK" 
+  craftable: true
+  craftingPermission: LETHER.6
+  recipe:
+    - iron_axe
+    - ""
+    - ""
+    - ""
+    - paper 8
+    - paper 8
+    - ""
+    - paper 8
+    - lether 8
+
+baseDamage: 1
+baseAttackSpeed: 1

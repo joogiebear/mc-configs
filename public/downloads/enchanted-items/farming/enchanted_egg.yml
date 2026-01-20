@@ -1,0 +1,26 @@
+item:
+  item: egg unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Egg"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "CHICKEN.5"
+  recipe:
+    - egg 16
+    - egg 16
+    - egg 16
+    - egg 16
+    - egg 16
+    - egg 16
+    - egg 16
+    - egg 16
+    - egg 16
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

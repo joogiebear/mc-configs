@@ -1,0 +1,26 @@
+item:
+  item: cooked_chicken unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Cooked Chicken"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "CHICKEN.8"
+  recipe:
+    - ""
+    - ecoitems:enchanted_raw_chicken 32
+    - ""
+    - ecoitems:enchanted_raw_chicken 32
+    - ecoitems:enchanted_raw_chicken 32
+    - ecoitems:enchanted_raw_chicken 32
+    - ""
+    - ecoitems:enchanted_raw_chicken 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

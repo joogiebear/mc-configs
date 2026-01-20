@@ -1,0 +1,26 @@
+item:
+  item: redstone_lamp unbreaking:1 hide_enchants hide_attributes
+  displayName: "&9Enchanted Redstone Lamp"
+  lore: 
+    - ""
+    - "&9&lRARE"
+  craftable: true
+  craftingPermission: "GLOWSTONE.6"
+  recipe:
+    - ""
+    - ecoitems:enchanted_redstone 32
+    - ""
+    - ecoitems:enchanted_redstone 32
+    - ecoitems:enchanted_glowstone_dust 32
+    - ecoitems:enchanted_redstone 32
+    - ""
+    - ecoitems:enchanted_redstone 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

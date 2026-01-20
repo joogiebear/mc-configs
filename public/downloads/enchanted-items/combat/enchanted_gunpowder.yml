@@ -1,0 +1,26 @@
+item:
+  item: gunpowder unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Gunpowder"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "GUNPOWDER.4"
+  recipe:
+    - ""
+    - gunpowder 32
+    - ""
+    - gunpowder 32
+    - gunpowder 32
+    - gunpowder 32
+    - ""
+    - gunpowder 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: brown_mushroom unbreaking:1 hide_enchants hide_attributes
+  displayName: "&fEnchanted Brown Mushroom"
+  lore: 
+    - ""
+    - "&f&lCOMMON"
+  craftable: true
+  craftingPermission: "MUSHROOM.3"
+  recipe:
+    - ""
+    - brown_mushroom 32
+    - ""
+    - brown_mushroom 32
+    - brown_mushroom 32
+    - brown_mushroom 32
+    - ""
+    - brown_mushroom 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

@@ -1,0 +1,26 @@
+item:
+  item: spider_eye unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Spider Eye"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "SPIDER.EYE.4"
+  recipe:
+    - ""
+    - spider_eye 32
+    - ""
+    - spider_eye 32
+    - spider_eye 32
+    - spider_eye 32
+    - ""
+    - spider_eye 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

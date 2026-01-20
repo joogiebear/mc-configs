@@ -1,0 +1,26 @@
+item:
+  item: sugar unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Sugar"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "SUGAR.CANE.4"
+  recipe:
+    - ""
+    - sugar 32
+    - ""
+    - sugar 32
+    - sugar 32
+    - sugar 32
+    - ""
+    - sugar 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

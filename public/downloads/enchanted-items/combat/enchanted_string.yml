@@ -1,0 +1,26 @@
+item:
+  item: string unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted String"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "STRING.4"
+  recipe:
+    - ""
+    - ""
+    - ""
+    - string 64
+    - string 64
+    - string 64
+    - ""
+    - ""
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

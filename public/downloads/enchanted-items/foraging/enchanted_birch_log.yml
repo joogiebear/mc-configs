@@ -1,0 +1,26 @@
+item:
+  item: birch_log unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Birch Log"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "BIRCH.6"
+  recipe:
+    - ""
+    - birch_log 32
+    - ""
+    - birch_log 32
+    - birch_log 32
+    - birch_log 32
+    - ""
+    - birch_log 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

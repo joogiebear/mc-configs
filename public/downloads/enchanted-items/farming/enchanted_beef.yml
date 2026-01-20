@@ -1,0 +1,26 @@
+item:
+  item: beef unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Beef"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "LEATHER.4"
+  recipe:
+    - ""
+    - beef 32
+    - ""
+    - beef 32
+    - beef 32
+    - beef 32
+    - ""
+    - beef 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

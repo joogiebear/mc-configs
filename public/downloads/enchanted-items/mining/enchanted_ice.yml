@@ -1,0 +1,26 @@
+item:
+  item: ice unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Ice"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "ICE.4"
+  recipe:
+    - ""
+    - ice 32
+    - ""
+    - ice 32
+    - ice 32
+    - ice 32
+    - ""
+    - ice 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]

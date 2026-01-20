@@ -1,0 +1,26 @@
+item:
+  item: flint unbreaking:1 hide_enchants hide_attributes
+  displayName: "&aEnchanted Flint"
+  lore: 
+    - ""
+    - "&a&lUNCOMMON"
+  craftable: true
+  craftingPermission: "GRAVEL.5"
+  recipe:
+    - ""
+    - flint 32
+    - ""
+    - flint 32
+    - flint 32
+    - flint 32
+    - ""
+    - flint 32
+    - ""
+
+baseDamage: 0
+baseAttackSpeed: 1
+
+effects: [ ]
+conditions: [ ]
+
+fuels: [ ]
