@@ -1,0 +1,70 @@
+# TopMinion 3.0 Configuration
+# Optimized by joogiebear
+
+settings:
+  # General settings
+  prefix: "&8[&aMinions&8] &7"
+  debug: false
+
+  # Performance settings
+  update-interval: 20 # ticks (1 second)
+  max-minions-per-player: 10
+  max-minions-per-chunk: 5
+
+  # Storage
+  storage-type: YAML # YAML, MySQL, SQLite
+  auto-save-interval: 300 # seconds
+
+minion-settings:
+  # Default minion configuration
+  default-speed: 1.0
+  default-range: 5
+
+  # Leveling
+  enable-leveling: true
+  max-level: 50
+  xp-per-action: 1
+
+  # Upgrades
+  upgrade-costs:
+    speed: 1000
+    range: 1500
+    efficiency: 2000
+
+resource-settings:
+  # Mining minion
+  mining:
+    enabled: true
+    blocks:
+      - STONE
+      - COBBLESTONE
+      - COAL_ORE
+      - IRON_ORE
+      - GOLD_ORE
+      - DIAMOND_ORE
+    cooldown: 60 # ticks
+
+  # Farming minion
+  farming:
+    enabled: true
+    crops:
+      - WHEAT
+      - CARROTS
+      - POTATOES
+      - BEETROOTS
+    cooldown: 40 # ticks
+    auto-replant: true
+
+  # Fishing minion
+  fishing:
+    enabled: true
+    cooldown: 100 # ticks
+    treasure-chance: 0.05
+
+# World restrictions
+world-settings:
+  enabled-worlds:
+    - world
+    - world_nether
+    - world_the_end
+  disabled-regions: []

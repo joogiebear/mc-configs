@@ -1,0 +1,88 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import DownloadButton from '../../components/DownloadButton.astro';
+import Changelog from '../../components/Changelog.astro';
+
+export async function getStaticPaths() {
+  const configs = await getCollection('configs');
+  return configs.map((config) => ({
+    params: { slug: config.id },
+    props: { config },
+  }));
+}
+
+const { config } = Astro.props;
+const { Content } = await render(config);
+
+const formattedDate = config.data.lastUpdated.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+// Build download paths - files are stored relative to the content folder
+// We'll copy them to public during build or serve them from a different location
+const downloadBasePath = `/downloads/${config.id}`;
+---
+
+<Layout title={config.data.title} description={config.data.description}>
+  <div class="mb-6">
+    <a href="/" class="inline-flex items-center gap-1 text-sm text-zinc-400 hover:text-emerald-400 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Back to all configs
+    </a>
+  </div>
+
+  <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6 md:p-8">
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <h1 class="text-2xl font-bold text-white md:text-3xl">
+          {config.data.plugin}
+        </h1>
+        <p class="mt-2 text-zinc-400">
+          {config.data.description}
+        </p>
+      </div>
+      <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-400">
+        v{config.data.version}
+      </span>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-4 text-sm text-zinc-500">
+      <span class="inline-flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        Updated {formattedDate}
+      </span>
+      <span class="inline-flex items-center gap-1 rounded bg-zinc-700/50 px-2 py-0.5">
+        Minecraft {config.data.minecraftVersion}
+      </span>
+    </div>
+
+    <hr class="my-6 border-zinc-700" />
+
+    <div>
+      <h2 class="text-lg font-semibold text-white mb-4">Download Files</h2>
+      <div class="flex flex-wrap gap-3">
+        {config.data.files.map((file) => (
+          <DownloadButton
+            name={file.name}
+            href={`${downloadBasePath}/${file.name}`}
+          />
+        ))}
+      </div>
+    </div>
+
+    <hr class="my-6 border-zinc-700" />
+
+    <div>
+      <Changelog>
+        <Content />
+      </Changelog>
+    </div>
+  </div>
+</Layout>
