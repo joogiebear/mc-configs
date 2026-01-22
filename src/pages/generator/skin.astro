@@ -1,0 +1,363 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Skin Generator" description="Generate custom TopMinion skin configurations">
+  <div class="space-y-6">
+    <div class="flex items-center gap-4">
+      <a href="/generator" class="text-zinc-400 hover:text-white transition-colors">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+      <h1 class="text-3xl font-bold text-white">Skin Generator</h1>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Form Panel -->
+      <div class="space-y-6">
+        <!-- Basic Info -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Basic Info</h2>
+          <div class="space-y-4">
+            <div>
+              <label for="skin_id" class="block text-sm font-medium text-zinc-300 mb-1">Skin ID</label>
+              <input type="text" id="skin_id" placeholder="amethyst_skin" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="skin_name" class="block text-sm font-medium text-zinc-300 mb-1">Display Name</label>
+              <input type="text" id="skin_name" placeholder="&d&lAmethyst Minion" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="skin_lore" class="block text-sm font-medium text-zinc-300 mb-1">Lore (one per line)</label>
+              <textarea id="skin_lore" rows="3" placeholder="&7Crystal resonance&#10;&5Geode guardian" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Display Item -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Display Item (Inventory)</h2>
+          <div class="space-y-4">
+            <div>
+              <label for="display_skull" class="block text-sm font-medium text-zinc-300 mb-1">Skull Texture (Base64)</label>
+              <textarea id="display_skull" rows="2" placeholder="eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6I..." class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none font-mono text-sm"></textarea>
+              <p class="text-xs text-zinc-500 mt-1">The head texture shown in the inventory/menu</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Minion Appearance -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Minion Appearance</h2>
+          <div class="space-y-4">
+            <div>
+              <label for="minion_head" class="block text-sm font-medium text-zinc-300 mb-1">Head Texture (Base64)</label>
+              <textarea id="minion_head" rows="2" placeholder="eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6I..." class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none font-mono text-sm"></textarea>
+              <p class="text-xs text-zinc-500 mt-1">The head texture the minion entity will wear</p>
+            </div>
+
+            <!-- Chestplate -->
+            <div class="p-4 rounded-lg bg-zinc-900/50 border border-zinc-700">
+              <h3 class="text-sm font-medium text-zinc-200 mb-3">Chestplate</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="chest_material" class="block text-xs text-zinc-400 mb-1">Material</label>
+                  <input type="text" id="chest_material" value="LEATHER_CHESTPLATE" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-white text-sm focus:border-purple-500 focus:outline-none">
+                </div>
+                <div>
+                  <label for="chest_color" class="block text-xs text-zinc-400 mb-1">Color</label>
+                  <div class="flex gap-2">
+                    <input type="color" id="chest_color" value="#9400D3" class="w-12 h-9 rounded border border-zinc-700 bg-zinc-800 cursor-pointer">
+                    <input type="text" id="chest_color_rgb" value="148,0,211" readonly class="flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-zinc-400 text-sm font-mono">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Leggings -->
+            <div class="p-4 rounded-lg bg-zinc-900/50 border border-zinc-700">
+              <h3 class="text-sm font-medium text-zinc-200 mb-3">Leggings</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="legs_material" class="block text-xs text-zinc-400 mb-1">Material</label>
+                  <input type="text" id="legs_material" value="LEATHER_LEGGINGS" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-white text-sm focus:border-purple-500 focus:outline-none">
+                </div>
+                <div>
+                  <label for="legs_color" class="block text-xs text-zinc-400 mb-1">Color</label>
+                  <div class="flex gap-2">
+                    <input type="color" id="legs_color" value="#8A2BE2" class="w-12 h-9 rounded border border-zinc-700 bg-zinc-800 cursor-pointer">
+                    <input type="text" id="legs_color_rgb" value="138,43,226" readonly class="flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-zinc-400 text-sm font-mono">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Boots -->
+            <div class="p-4 rounded-lg bg-zinc-900/50 border border-zinc-700">
+              <h3 class="text-sm font-medium text-zinc-200 mb-3">Boots</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="boots_material" class="block text-xs text-zinc-400 mb-1">Material</label>
+                  <input type="text" id="boots_material" value="LEATHER_BOOTS" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-white text-sm focus:border-purple-500 focus:outline-none">
+                </div>
+                <div>
+                  <label for="boots_color" class="block text-xs text-zinc-400 mb-1">Color</label>
+                  <div class="flex gap-2">
+                    <input type="color" id="boots_color" value="#8000C8" class="w-12 h-9 rounded border border-zinc-700 bg-zinc-800 cursor-pointer">
+                    <input type="text" id="boots_color_rgb" value="128,0,200" readonly class="flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-zinc-400 text-sm font-mono">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Equipment -->
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="skin_tool" class="block text-sm font-medium text-zinc-300 mb-1">Tool (Main Hand)</label>
+                <input type="text" id="skin_tool" placeholder="IRON_PICKAXE" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none">
+              </div>
+              <div>
+                <label for="skin_offhand" class="block text-sm font-medium text-zinc-300 mb-1">Off Hand</label>
+                <input type="text" id="skin_offhand" placeholder="AMETHYST_SHARD" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Color Presets -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Color Presets</h2>
+          <p class="text-sm text-zinc-400 mb-4">Click a preset to apply colors to all armor pieces</p>
+          <div class="grid grid-cols-4 gap-2">
+            <button data-preset="amethyst" class="preset-btn p-3 rounded-lg border border-zinc-700 bg-gradient-to-br from-purple-600 to-purple-900 hover:border-purple-500 transition-colors">
+              <span class="text-xs text-white font-medium">Amethyst</span>
+            </button>
+            <button data-preset="fire" class="preset-btn p-3 rounded-lg border border-zinc-700 bg-gradient-to-br from-orange-500 to-red-700 hover:border-orange-500 transition-colors">
+              <span class="text-xs text-white font-medium">Fire</span>
+            </button>
+            <button data-preset="ice" class="preset-btn p-3 rounded-lg border border-zinc-700 bg-gradient-to-br from-cyan-400 to-blue-700 hover:border-cyan-500 transition-colors">
+              <span class="text-xs text-white font-medium">Ice</span>
+            </button>
+            <button data-preset="nature" class="preset-btn p-3 rounded-lg border border-zinc-700 bg-gradient-to-br from-green-500 to-green-800 hover:border-green-500 transition-colors">
+              <span class="text-xs text-white font-medium">Nature</span>
+            </button>
+            <button data-preset="gold" class="preset-btn p-3 rounded-lg border border-zinc-700 bg-gradient-to-br from-yellow-400 to-amber-700 hover:border-yellow-500 transition-colors">
+              <span class="text-xs text-white font-medium">Gold</span>
+            </button>
+            <button data-preset="shadow" class="preset-btn p-3 rounded-lg border border-zinc-700 bg-gradient-to-br from-gray-600 to-gray-900 hover:border-gray-500 transition-colors">
+              <span class="text-xs text-white font-medium">Shadow</span>
+            </button>
+            <button data-preset="ocean" class="preset-btn p-3 rounded-lg border border-zinc-700 bg-gradient-to-br from-blue-400 to-blue-800 hover:border-blue-500 transition-colors">
+              <span class="text-xs text-white font-medium">Ocean</span>
+            </button>
+            <button data-preset="nether" class="preset-btn p-3 rounded-lg border border-zinc-700 bg-gradient-to-br from-red-600 to-red-950 hover:border-red-500 transition-colors">
+              <span class="text-xs text-white font-medium">Nether</span>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="lg:sticky lg:top-8 lg:self-start">
+        <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-700 bg-zinc-900/50">
+            <h3 class="font-medium text-white">YAML Preview</h3>
+            <div class="flex gap-2">
+              <button id="copy-yaml" class="px-3 py-1.5 text-sm rounded-lg bg-zinc-700 text-zinc-300 hover:bg-purple-600 hover:text-white transition-colors">
+                Copy
+              </button>
+              <button id="download-yaml" class="px-3 py-1.5 text-sm rounded-lg bg-purple-600 text-white hover:bg-purple-500 transition-colors">
+                Download
+              </button>
+            </div>
+          </div>
+          <pre id="yaml-preview" class="p-4 overflow-auto max-h-[calc(100vh-200px)] text-sm font-mono text-zinc-300 yaml-preview"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Color presets (RGB values)
+  const presets: Record<string, {chest: string, legs: string, boots: string, chestHex: string, legsHex: string, bootsHex: string}> = {
+    amethyst: { chest: '148,0,211', legs: '138,43,226', boots: '128,0,200', chestHex: '#9400D3', legsHex: '#8A2BE2', bootsHex: '#8000C8' },
+    fire: { chest: '255,85,0', legs: '255,50,0', boots: '200,30,0', chestHex: '#FF5500', legsHex: '#FF3200', bootsHex: '#C81E00' },
+    ice: { chest: '150,220,255', legs: '100,180,255', boots: '50,150,255', chestHex: '#96DCFF', legsHex: '#64B4FF', bootsHex: '#3296FF' },
+    nature: { chest: '34,139,34', legs: '0,128,0', boots: '0,100,0', chestHex: '#228B22', legsHex: '#008000', bootsHex: '#006400' },
+    gold: { chest: '255,215,0', legs: '255,193,7', boots: '218,165,32', chestHex: '#FFD700', legsHex: '#FFC107', bootsHex: '#DAA520' },
+    shadow: { chest: '64,64,64', legs: '48,48,48', boots: '32,32,32', chestHex: '#404040', legsHex: '#303030', bootsHex: '#202020' },
+    ocean: { chest: '0,105,148', legs: '0,128,180', boots: '0,150,200', chestHex: '#006994', legsHex: '#0080B4', bootsHex: '#0096C8' },
+    nether: { chest: '139,0,0', legs: '120,0,0', boots: '100,0,0', chestHex: '#8B0000', legsHex: '#780000', bootsHex: '#640000' },
+  };
+
+  // Helper to convert hex to RGB
+  function hexToRgb(hex: string): string {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if (!result) return '255,255,255';
+    return `${parseInt(result[1], 16)},${parseInt(result[2], 16)},${parseInt(result[3], 16)}`;
+  }
+
+  // Update RGB display from color picker
+  function updateRgbDisplay(colorId: string, rgbId: string) {
+    const colorInput = document.getElementById(colorId) as HTMLInputElement;
+    const rgbInput = document.getElementById(rgbId) as HTMLInputElement;
+    if (colorInput && rgbInput) {
+      rgbInput.value = hexToRgb(colorInput.value);
+    }
+  }
+
+  // Get form values
+  function getFormValues() {
+    return {
+      id: (document.getElementById('skin_id') as HTMLInputElement).value || 'custom_skin',
+      name: (document.getElementById('skin_name') as HTMLInputElement).value || '&f&lCustom Skin',
+      lore: (document.getElementById('skin_lore') as HTMLTextAreaElement).value,
+      display_skull: (document.getElementById('display_skull') as HTMLTextAreaElement).value,
+      minion_head: (document.getElementById('minion_head') as HTMLTextAreaElement).value,
+      chest_material: (document.getElementById('chest_material') as HTMLInputElement).value,
+      chest_color: (document.getElementById('chest_color_rgb') as HTMLInputElement).value,
+      legs_material: (document.getElementById('legs_material') as HTMLInputElement).value,
+      legs_color: (document.getElementById('legs_color_rgb') as HTMLInputElement).value,
+      boots_material: (document.getElementById('boots_material') as HTMLInputElement).value,
+      boots_color: (document.getElementById('boots_color_rgb') as HTMLInputElement).value,
+      tool: (document.getElementById('skin_tool') as HTMLInputElement).value,
+      offhand: (document.getElementById('skin_offhand') as HTMLInputElement).value,
+    };
+  }
+
+  // Generate YAML
+  function generateYaml(): string {
+    const v = getFormValues();
+
+    let yaml = `id: ${v.id}
+
+type: SKIN
+
+display_item:
+  material:
+    skull: ${v.display_skull || "''"}
+    hook:
+      items_adder: ''
+      oraxen: ''
+      nexo: ''
+  name: '${v.name}'`;
+
+    if (v.lore) {
+      yaml += `
+  lore:`;
+      v.lore.split('\n').forEach(line => {
+        if (line.trim()) {
+          yaml += `
+    - '${line}'`;
+        }
+      });
+    } else {
+      yaml += `
+  lore: []`;
+    }
+
+    yaml += `
+
+minion_display:
+  head: ${v.minion_head || "''"}
+  chestplate:
+    material: ${v.chest_material}
+    color: '${v.chest_color}'
+  leggings:
+    material: ${v.legs_material}
+    color: '${v.legs_color}'
+  boots:
+    material: ${v.boots_material}
+    color: '${v.boots_color}'
+  tool: ${v.tool || 'IRON_PICKAXE'}
+  off_hand: ${v.offhand || 'AIR'}
+`;
+
+    return yaml;
+  }
+
+  // Update preview
+  function updatePreview() {
+    const preview = document.getElementById('yaml-preview');
+    if (preview) {
+      preview.textContent = generateYaml();
+    }
+  }
+
+  // Apply preset
+  function applyPreset(presetName: string) {
+    const preset = presets[presetName];
+    if (!preset) return;
+
+    // Update color pickers
+    (document.getElementById('chest_color') as HTMLInputElement).value = preset.chestHex;
+    (document.getElementById('legs_color') as HTMLInputElement).value = preset.legsHex;
+    (document.getElementById('boots_color') as HTMLInputElement).value = preset.bootsHex;
+
+    // Update RGB displays
+    (document.getElementById('chest_color_rgb') as HTMLInputElement).value = preset.chest;
+    (document.getElementById('legs_color_rgb') as HTMLInputElement).value = preset.legs;
+    (document.getElementById('boots_color_rgb') as HTMLInputElement).value = preset.boots;
+
+    updatePreview();
+  }
+
+  // Copy to clipboard
+  async function copyYaml() {
+    const yaml = generateYaml();
+    await navigator.clipboard.writeText(yaml);
+    const btn = document.getElementById('copy-yaml');
+    if (btn) {
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+    }
+  }
+
+  // Download YAML
+  function downloadYaml() {
+    const yaml = generateYaml();
+    const v = getFormValues();
+    const filename = `${v.id || 'skin'}.yml`;
+    const blob = new Blob([yaml], { type: 'text/yaml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add input listeners
+    document.querySelectorAll('input, textarea').forEach(el => {
+      el.addEventListener('input', updatePreview);
+      el.addEventListener('change', updatePreview);
+    });
+
+    // Color picker listeners
+    ['chest', 'legs', 'boots'].forEach(part => {
+      document.getElementById(`${part}_color`)?.addEventListener('input', () => {
+        updateRgbDisplay(`${part}_color`, `${part}_color_rgb`);
+        updatePreview();
+      });
+    });
+
+    // Preset buttons
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = (btn as HTMLElement).dataset.preset;
+        if (preset) applyPreset(preset);
+      });
+    });
+
+    // Copy/download buttons
+    document.getElementById('copy-yaml')?.addEventListener('click', copyYaml);
+    document.getElementById('download-yaml')?.addEventListener('click', downloadYaml);
+
+    // Initial preview
+    updatePreview();
+  });
+</script>

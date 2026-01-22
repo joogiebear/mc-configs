@@ -1,0 +1,625 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Minion Generator" description="Generate custom TopMinion configurations">
+  <div class="space-y-6">
+    <div class="flex items-center gap-4">
+      <a href="/generator" class="text-zinc-400 hover:text-white transition-colors">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+      <h1 class="text-3xl font-bold text-white">Minion Generator</h1>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Form Panel -->
+      <div class="space-y-6">
+        <!-- Basic Info -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Basic Info</h2>
+          <div class="space-y-4">
+            <div>
+              <label for="minion_id" class="block text-sm font-medium text-zinc-300 mb-1">Minion ID</label>
+              <input type="text" id="minion_id" placeholder="WHEAT" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="display_name" class="block text-sm font-medium text-zinc-300 mb-1">Display Name</label>
+              <input type="text" id="display_name" placeholder="Wheat Minion" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="minion_type" class="block text-sm font-medium text-zinc-300 mb-1">Type</label>
+              <select id="minion_type" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+                <option value="FARMER">FARMER</option>
+                <option value="FISHER">FISHER</option>
+                <option value="LUMBERJACK">LUMBERJACK</option>
+                <option value="MINER">MINER</option>
+                <option value="SLAYER">SLAYER</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- Display Item -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Display Item</h2>
+          <div class="space-y-4">
+            <div>
+              <label for="skull_texture" class="block text-sm font-medium text-zinc-300 mb-1">Skull Texture (Base64)</label>
+              <textarea id="skull_texture" rows="2" placeholder="eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6I..." class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none font-mono text-sm"></textarea>
+            </div>
+            <div>
+              <label for="item_name" class="block text-sm font-medium text-zinc-300 mb-1">Item Name</label>
+              <input type="text" id="item_name" placeholder="&6Wheat Minion" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="item_lore" class="block text-sm font-medium text-zinc-300 mb-1">Item Lore (one per line)</label>
+              <textarea id="item_lore" rows="3" placeholder="&7This is a wheat farmer&#10;&7Harvests wheat crops" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Type-Specific Fields -->
+        <section id="type-specific-section" class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Type-Specific Settings</h2>
+
+          <!-- FARMER fields -->
+          <div id="farmer-fields" class="space-y-4">
+            <div>
+              <label for="crop" class="block text-sm font-medium text-zinc-300 mb-1">Crop Material</label>
+              <input type="text" id="crop" placeholder="WHEAT" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="layout_material" class="block text-sm font-medium text-zinc-300 mb-1">Layout Material</label>
+              <input type="text" id="layout_material" placeholder="FARMLAND" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+          </div>
+
+          <!-- LUMBERJACK fields -->
+          <div id="lumberjack-fields" class="space-y-4 hidden">
+            <div>
+              <label for="log_material" class="block text-sm font-medium text-zinc-300 mb-1">Log Material</label>
+              <input type="text" id="log_material" placeholder="OAK_LOG" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="leaves_material" class="block text-sm font-medium text-zinc-300 mb-1">Leaves Material</label>
+              <input type="text" id="leaves_material" placeholder="OAK_LEAVES" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="sapling_material" class="block text-sm font-medium text-zinc-300 mb-1">Sapling Material</label>
+              <input type="text" id="sapling_material" placeholder="OAK_SAPLING" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="lumberjack_layout" class="block text-sm font-medium text-zinc-300 mb-1">Layout Material</label>
+              <input type="text" id="lumberjack_layout" placeholder="GRASS_BLOCK" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+          </div>
+
+          <!-- MINER fields -->
+          <div id="miner-fields" class="space-y-4 hidden">
+            <div>
+              <label for="miner_layout" class="block text-sm font-medium text-zinc-300 mb-1">Layout Material (Block to Mine)</label>
+              <input type="text" id="miner_layout" placeholder="COBBLESTONE" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+          </div>
+
+          <!-- FISHER fields -->
+          <div id="fisher-fields" class="space-y-4 hidden">
+            <div>
+              <label for="fisher_layout" class="block text-sm font-medium text-zinc-300 mb-1">Layout Material</label>
+              <input type="text" id="fisher_layout" placeholder="WATER" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+          </div>
+
+          <!-- SLAYER fields -->
+          <div id="slayer-fields" class="space-y-4 hidden">
+            <div>
+              <label for="slayer_layout" class="block text-sm font-medium text-zinc-300 mb-1">Layout Material</label>
+              <input type="text" id="slayer_layout" placeholder="COBBLESTONE" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="mob_type" class="block text-sm font-medium text-zinc-300 mb-1">Mob Type</label>
+              <input type="text" id="mob_type" placeholder="ZOMBIE" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="mob_chance" class="block text-sm font-medium text-zinc-300 mb-1">Spawn Chance (%)</label>
+              <input type="number" id="mob_chance" value="100" min="0" max="100" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="mob_detection_radius" class="block text-sm font-medium text-zinc-300 mb-1">Detection Radius (blocks)</label>
+              <input type="number" id="mob_detection_radius" value="3" min="1" max="10" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+          </div>
+        </section>
+
+        <!-- Options -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Options</h2>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <input type="checkbox" id="work_unload" class="h-4 w-4 rounded border-zinc-600 bg-zinc-700 text-emerald-500 focus:ring-emerald-500">
+              <label for="work_unload" class="text-sm text-zinc-300">Work when chunk is unloaded</label>
+            </div>
+            <div class="flex items-center gap-3">
+              <input type="checkbox" id="should_replace_blocks" checked class="h-4 w-4 rounded border-zinc-600 bg-zinc-700 text-emerald-500 focus:ring-emerald-500">
+              <label for="should_replace_blocks" class="text-sm text-zinc-300">Should replace blocks</label>
+            </div>
+            <div>
+              <label for="member_limit" class="block text-sm font-medium text-zinc-300 mb-1">Member Limit</label>
+              <input type="number" id="member_limit" value="5" min="1" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+            </div>
+          </div>
+        </section>
+
+        <!-- Minion Level -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Minion Level 1</h2>
+          <div class="space-y-4">
+            <div>
+              <label for="level_head" class="block text-sm font-medium text-zinc-300 mb-1">Head Texture (Base64)</label>
+              <textarea id="level_head" rows="2" placeholder="eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6I..." class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none font-mono text-sm"></textarea>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="chestplate_material" class="block text-sm font-medium text-zinc-300 mb-1">Chestplate Material</label>
+                <input type="text" id="chestplate_material" value="LEATHER_CHESTPLATE" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+              </div>
+              <div>
+                <label for="chestplate_color" class="block text-sm font-medium text-zinc-300 mb-1">Chestplate Color</label>
+                <input type="color" id="chestplate_color" value="#FFD700" class="w-full h-10 rounded-lg border border-zinc-700 bg-zinc-800 cursor-pointer">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="leggings_material" class="block text-sm font-medium text-zinc-300 mb-1">Leggings Material</label>
+                <input type="text" id="leggings_material" value="LEATHER_LEGGINGS" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+              </div>
+              <div>
+                <label for="leggings_color" class="block text-sm font-medium text-zinc-300 mb-1">Leggings Color</label>
+                <input type="color" id="leggings_color" value="#FFD700" class="w-full h-10 rounded-lg border border-zinc-700 bg-zinc-800 cursor-pointer">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="boots_material" class="block text-sm font-medium text-zinc-300 mb-1">Boots Material</label>
+                <input type="text" id="boots_material" value="LEATHER_BOOTS" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+              </div>
+              <div>
+                <label for="boots_color" class="block text-sm font-medium text-zinc-300 mb-1">Boots Color</label>
+                <input type="color" id="boots_color" value="#FFD700" class="w-full h-10 rounded-lg border border-zinc-700 bg-zinc-800 cursor-pointer">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="tool" class="block text-sm font-medium text-zinc-300 mb-1">Tool (Main Hand)</label>
+                <input type="text" id="tool" placeholder="DIAMOND_HOE" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+              </div>
+              <div>
+                <label for="off_hand" class="block text-sm font-medium text-zinc-300 mb-1">Off Hand</label>
+                <input type="text" id="off_hand" placeholder="WHEAT_SEEDS" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="time_between_actions" class="block text-sm font-medium text-zinc-300 mb-1">Time Between Actions (ticks)</label>
+                <input type="number" id="time_between_actions" value="100" min="1" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+                <p class="text-xs text-zinc-500 mt-1">20 ticks = 1 second</p>
+              </div>
+              <div>
+                <label for="storage_size" class="block text-sm font-medium text-zinc-300 mb-1">Storage Size (slots)</label>
+                <input type="number" id="storage_size" value="6" min="1" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Gather Items -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Gather Items</h2>
+          <div id="gather-items-container" class="space-y-4">
+            <div class="gather-item p-4 rounded-lg bg-zinc-900/50 border border-zinc-700">
+              <div class="grid grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-zinc-300 mb-1">Material</label>
+                  <input type="text" class="gather-material w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none" placeholder="WHEAT">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-zinc-300 mb-1">Amount</label>
+                  <input type="number" class="gather-amount w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-white focus:border-emerald-500 focus:outline-none" value="1" min="1">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-zinc-300 mb-1">Chance (%)</label>
+                  <input type="number" class="gather-chance w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-white focus:border-emerald-500 focus:outline-none" value="30" min="0" max="100">
+                </div>
+              </div>
+            </div>
+          </div>
+          <button id="add-gather-item" class="mt-4 px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-emerald-500 hover:text-emerald-400 transition-colors">
+            + Add Gather Item
+          </button>
+        </section>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="lg:sticky lg:top-8 lg:self-start">
+        <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-700 bg-zinc-900/50">
+            <h3 class="font-medium text-white">YAML Preview</h3>
+            <div class="flex gap-2">
+              <button id="copy-yaml" class="px-3 py-1.5 text-sm rounded-lg bg-zinc-700 text-zinc-300 hover:bg-emerald-600 hover:text-white transition-colors">
+                Copy
+              </button>
+              <button id="download-yaml" class="px-3 py-1.5 text-sm rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors">
+                Download
+              </button>
+            </div>
+          </div>
+          <pre id="yaml-preview" class="p-4 overflow-auto max-h-[calc(100vh-200px)] text-sm font-mono text-zinc-300 yaml-preview"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Helper to convert hex color to RGB string
+  function hexToRgb(hex: string): string {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if (!result) return '255,255,255';
+    return `${parseInt(result[1], 16)},${parseInt(result[2], 16)},${parseInt(result[3], 16)}`;
+  }
+
+  // Get form values
+  function getFormValues() {
+    const minionType = (document.getElementById('minion_type') as HTMLSelectElement).value;
+
+    return {
+      minion_id: (document.getElementById('minion_id') as HTMLInputElement).value || 'EXAMPLE',
+      display_name: (document.getElementById('display_name') as HTMLInputElement).value || 'Example Minion',
+      type: minionType,
+      skull_texture: (document.getElementById('skull_texture') as HTMLTextAreaElement).value,
+      item_name: (document.getElementById('item_name') as HTMLInputElement).value,
+      item_lore: (document.getElementById('item_lore') as HTMLTextAreaElement).value,
+      // Type-specific
+      crop: (document.getElementById('crop') as HTMLInputElement).value,
+      layout_material: (document.getElementById('layout_material') as HTMLInputElement).value,
+      log_material: (document.getElementById('log_material') as HTMLInputElement).value,
+      leaves_material: (document.getElementById('leaves_material') as HTMLInputElement).value,
+      sapling_material: (document.getElementById('sapling_material') as HTMLInputElement).value,
+      lumberjack_layout: (document.getElementById('lumberjack_layout') as HTMLInputElement).value,
+      miner_layout: (document.getElementById('miner_layout') as HTMLInputElement).value,
+      fisher_layout: (document.getElementById('fisher_layout') as HTMLInputElement).value,
+      slayer_layout: (document.getElementById('slayer_layout') as HTMLInputElement).value,
+      mob_type: (document.getElementById('mob_type') as HTMLInputElement).value,
+      mob_chance: (document.getElementById('mob_chance') as HTMLInputElement).value,
+      mob_detection_radius: (document.getElementById('mob_detection_radius') as HTMLInputElement).value,
+      // Options
+      work_unload: (document.getElementById('work_unload') as HTMLInputElement).checked,
+      should_replace_blocks: (document.getElementById('should_replace_blocks') as HTMLInputElement).checked,
+      member_limit: (document.getElementById('member_limit') as HTMLInputElement).value,
+      // Level
+      level_head: (document.getElementById('level_head') as HTMLTextAreaElement).value,
+      chestplate_material: (document.getElementById('chestplate_material') as HTMLInputElement).value,
+      chestplate_color: hexToRgb((document.getElementById('chestplate_color') as HTMLInputElement).value),
+      leggings_material: (document.getElementById('leggings_material') as HTMLInputElement).value,
+      leggings_color: hexToRgb((document.getElementById('leggings_color') as HTMLInputElement).value),
+      boots_material: (document.getElementById('boots_material') as HTMLInputElement).value,
+      boots_color: hexToRgb((document.getElementById('boots_color') as HTMLInputElement).value),
+      tool: (document.getElementById('tool') as HTMLInputElement).value,
+      off_hand: (document.getElementById('off_hand') as HTMLInputElement).value,
+      time_between_actions: (document.getElementById('time_between_actions') as HTMLInputElement).value,
+      storage_size: (document.getElementById('storage_size') as HTMLInputElement).value,
+    };
+  }
+
+  // Get gather items
+  function getGatherItems() {
+    const items: Array<{material: string, amount: string, chance: string}> = [];
+    document.querySelectorAll('.gather-item').forEach(item => {
+      const material = (item.querySelector('.gather-material') as HTMLInputElement).value;
+      const amount = (item.querySelector('.gather-amount') as HTMLInputElement).value;
+      const chance = (item.querySelector('.gather-chance') as HTMLInputElement).value;
+      if (material) {
+        items.push({ material, amount, chance });
+      }
+    });
+    return items;
+  }
+
+  // Generate YAML
+  function generateYaml(): string {
+    const v = getFormValues();
+    const gatherItems = getGatherItems();
+
+    let yaml = `minion_id: ${v.minion_id}
+
+display_name: ${v.display_name}
+
+type: ${v.type}
+
+display_item:
+  skull: ${v.skull_texture || "''"}\n`;
+
+    if (v.item_name) {
+      yaml += `  name: ${v.item_name}\n`;
+    }
+
+    if (v.item_lore) {
+      yaml += `  lore:\n`;
+      v.item_lore.split('\n').forEach(line => {
+        if (line.trim()) {
+          yaml += `    - '${line}'\n`;
+        }
+      });
+    }
+
+    // Type-specific fields
+    if (v.type === 'FARMER') {
+      yaml += `
+crop:
+  default: ${v.crop || 'WHEAT'}
+  hook:
+    items_adder: ''
+    oraxen: ''
+    nexo: ''
+
+layout_material:
+  default: ${v.layout_material || 'FARMLAND'}
+  hook:
+    items_adder: ''
+    oraxen: ''
+    nexo: ''
+`;
+    } else if (v.type === 'LUMBERJACK') {
+      yaml += `
+log_material:
+  default: ${v.log_material || 'OAK_LOG'}
+  hook:
+    items_adder: ''
+    oraxen: ''
+    nexo: ''
+
+leaves_material:
+  default: ${v.leaves_material || 'OAK_LEAVES'}
+  hook:
+    items_adder: ''
+    oraxen: ''
+    nexo: ''
+
+sapling_material:
+  default: ${v.sapling_material || 'OAK_SAPLING'}
+  hook:
+    items_adder: ''
+    oraxen: ''
+    nexo: ''
+
+layout_material:
+  default: ${v.lumberjack_layout || 'GRASS_BLOCK'}
+  hook:
+    items_adder: ''
+    oraxen: ''
+    nexo: ''
+`;
+    } else if (v.type === 'MINER') {
+      yaml += `
+layout_material:
+  default: ${v.miner_layout || 'COBBLESTONE'}
+  hook:
+    items_adder: ''
+    oraxen: ''
+    nexo: ''
+`;
+    } else if (v.type === 'FISHER') {
+      yaml += `
+layout_material:
+  default: ${v.fisher_layout || 'WATER'}
+  hook:
+    items_adder: ''
+    oraxen: ''
+    nexo: ''
+`;
+    } else if (v.type === 'SLAYER') {
+      yaml += `
+layout_material:
+  default: ${v.slayer_layout || 'COBBLESTONE'}
+  hook:
+    items_adder: ''
+    oraxen: ''
+    nexo: ''
+
+mobs:
+  '1':
+    default: ${v.mob_type || 'ZOMBIE'}
+    hook:
+      items_adder: ''
+      oraxen: ''
+      nexo: ''
+    chance: ${v.mob_chance || '100'}
+`;
+    }
+
+    // Options
+    yaml += `
+options:
+  work_unload: ${v.work_unload}
+  should_replace_blocks: ${v.should_replace_blocks}
+  member_limit: ${v.member_limit}`;
+
+    if (v.type === 'SLAYER') {
+      yaml += `
+  mob_detection_radius: ${v.mob_detection_radius}`;
+    }
+
+    yaml += `
+  holograms:
+    enabled: true
+    chance_to_show: 100
+    not_valid_environment:
+      - '&cNot valid environment!'
+    messages:
+      - '&7Working...'
+`;
+
+    // Minion levels
+    yaml += `
+minion_levels:
+  '1':
+    minion_display:
+      head: ${v.level_head || "''"}
+      chestplate:
+        material: ${v.chestplate_material}
+        color: '${v.chestplate_color}'
+      leggings:
+        material: ${v.leggings_material}
+        color: '${v.leggings_color}'
+      boots:
+        material: ${v.boots_material}
+        color: '${v.boots_color}'
+      tool: ${v.tool || 'DIAMOND_HOE'}
+      off_hand: ${v.off_hand || 'WHEAT_SEEDS'}
+    time_between_actions: ${v.time_between_actions}
+    inventory_storage_size: ${v.storage_size}
+    gather_items:
+      items:
+`;
+
+    gatherItems.forEach((item, index) => {
+      yaml += `        '${index + 1}':
+          default: ${item.material}
+          hook:
+            eco_items: ''
+            items_adder: ''
+            oraxen: ''
+            nexo: ''
+          amount: ${item.amount}
+          chance: ${item.chance}
+`;
+    });
+
+    yaml += `    requirements:
+      money: 0
+      items: []
+`;
+
+    return yaml;
+  }
+
+  // Update preview
+  function updatePreview() {
+    const preview = document.getElementById('yaml-preview');
+    if (preview) {
+      preview.textContent = generateYaml();
+    }
+  }
+
+  // Toggle type-specific fields
+  function updateTypeFields() {
+    const type = (document.getElementById('minion_type') as HTMLSelectElement).value;
+
+    // Hide all
+    document.getElementById('farmer-fields')?.classList.add('hidden');
+    document.getElementById('lumberjack-fields')?.classList.add('hidden');
+    document.getElementById('miner-fields')?.classList.add('hidden');
+    document.getElementById('fisher-fields')?.classList.add('hidden');
+    document.getElementById('slayer-fields')?.classList.add('hidden');
+
+    // Show relevant
+    if (type === 'FARMER') {
+      document.getElementById('farmer-fields')?.classList.remove('hidden');
+    } else if (type === 'LUMBERJACK') {
+      document.getElementById('lumberjack-fields')?.classList.remove('hidden');
+    } else if (type === 'MINER') {
+      document.getElementById('miner-fields')?.classList.remove('hidden');
+    } else if (type === 'FISHER') {
+      document.getElementById('fisher-fields')?.classList.remove('hidden');
+    } else if (type === 'SLAYER') {
+      document.getElementById('slayer-fields')?.classList.remove('hidden');
+    }
+
+    updatePreview();
+  }
+
+  // Add gather item
+  function addGatherItem() {
+    const container = document.getElementById('gather-items-container');
+    const newItem = document.createElement('div');
+    newItem.className = 'gather-item p-4 rounded-lg bg-zinc-900/50 border border-zinc-700';
+    newItem.innerHTML = `
+      <div class="grid grid-cols-3 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">Material</label>
+          <input type="text" class="gather-material w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none" placeholder="SEEDS">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">Amount</label>
+          <input type="number" class="gather-amount w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-white focus:border-emerald-500 focus:outline-none" value="1" min="1">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-zinc-300 mb-1">Chance (%)</label>
+          <input type="number" class="gather-chance w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-white focus:border-emerald-500 focus:outline-none" value="20" min="0" max="100">
+        </div>
+      </div>
+    `;
+    container?.appendChild(newItem);
+
+    // Add listeners to new inputs
+    newItem.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', updatePreview);
+    });
+
+    updatePreview();
+  }
+
+  // Copy to clipboard
+  async function copyYaml() {
+    const yaml = generateYaml();
+    await navigator.clipboard.writeText(yaml);
+    const btn = document.getElementById('copy-yaml');
+    if (btn) {
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+    }
+  }
+
+  // Download YAML
+  function downloadYaml() {
+    const yaml = generateYaml();
+    const v = getFormValues();
+    const filename = `${v.minion_id.toLowerCase() || 'minion'}.yml`;
+    const blob = new Blob([yaml], { type: 'text/yaml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add input listeners to all form fields
+    document.querySelectorAll('input, select, textarea').forEach(el => {
+      el.addEventListener('input', updatePreview);
+      el.addEventListener('change', updatePreview);
+    });
+
+    // Type selector
+    document.getElementById('minion_type')?.addEventListener('change', updateTypeFields);
+
+    // Add gather item button
+    document.getElementById('add-gather-item')?.addEventListener('click', addGatherItem);
+
+    // Copy/download buttons
+    document.getElementById('copy-yaml')?.addEventListener('click', copyYaml);
+    document.getElementById('download-yaml')?.addEventListener('click', downloadYaml);
+
+    // Initial preview
+    updatePreview();
+  });
+</script>

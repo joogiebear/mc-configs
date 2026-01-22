@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Config Generator" description="Generate custom TopMinion configurations with an easy-to-use GUI">
+  <div class="space-y-8">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold text-white mb-4">Config Generator</h1>
+      <p class="text-zinc-400 text-lg max-w-2xl mx-auto">
+        Create custom TopMinion configurations with our easy-to-use generator.
+        Build minions and skins with a live YAML preview.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <!-- Minion Generator Card -->
+      <a href="/generator/minion" class="group block rounded-lg border border-zinc-800 bg-zinc-800/50 p-8 transition-all hover:border-emerald-500/50 hover:bg-zinc-800">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="rounded-lg bg-emerald-500/10 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">Minion Generator</h2>
+        </div>
+        <p class="text-zinc-400 mb-4">
+          Create custom minion configurations with all 5 types: Farmer, Fisher, Lumberjack, Miner, and Slayer.
+        </p>
+        <ul class="text-sm text-zinc-500 space-y-1">
+          <li class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Configure display items & skins
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Set up minion levels & gather items
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Live YAML preview
+          </li>
+        </ul>
+        <div class="mt-6 flex items-center text-emerald-500 font-medium">
+          Start Building
+          <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Skin Generator Card -->
+      <a href="/generator/skin" class="group block rounded-lg border border-zinc-800 bg-zinc-800/50 p-8 transition-all hover:border-emerald-500/50 hover:bg-zinc-800">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="rounded-lg bg-purple-500/10 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">Skin Generator</h2>
+        </div>
+        <p class="text-zinc-400 mb-4">
+          Design custom minion skins with armor colors, equipment, and unique appearances.
+        </p>
+        <ul class="text-sm text-zinc-500 space-y-1">
+          <li class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            RGB color pickers for armor
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Custom head textures
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Tool & off-hand selection
+          </li>
+        </ul>
+        <div class="mt-6 flex items-center text-purple-500 font-medium">
+          Start Designing
+          <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</Layout>
