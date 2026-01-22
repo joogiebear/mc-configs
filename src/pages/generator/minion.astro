@@ -16,12 +16,34 @@ import Layout from '../../layouts/Layout.astro';
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- Form Panel -->
       <div class="space-y-6">
+        <!-- Presets -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Quick Start Presets</h2>
+          <div class="flex flex-wrap gap-2">
+            <button data-preset="wheat_farmer" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-emerald-500 hover:text-emerald-400 transition-colors text-sm">
+              Wheat Farmer
+            </button>
+            <button data-preset="cobblestone_miner" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-emerald-500 hover:text-emerald-400 transition-colors text-sm">
+              Cobblestone Miner
+            </button>
+            <button data-preset="oak_lumberjack" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-emerald-500 hover:text-emerald-400 transition-colors text-sm">
+              Oak Lumberjack
+            </button>
+            <button data-preset="zombie_slayer" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-emerald-500 hover:text-emerald-400 transition-colors text-sm">
+              Zombie Slayer
+            </button>
+            <button data-preset="basic_fisher" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-emerald-500 hover:text-emerald-400 transition-colors text-sm">
+              Basic Fisher
+            </button>
+          </div>
+        </section>
+
         <!-- Basic Info -->
         <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
           <h2 class="text-xl font-bold text-white mb-4">Basic Info</h2>
           <div class="space-y-4">
             <div>
-              <label for="minion_id" class="block text-sm font-medium text-zinc-300 mb-1">Minion ID</label>
+              <label for="minion_id" class="block text-sm font-medium text-zinc-300 mb-1">Minion ID <span class="text-red-400">*</span></label>
               <input type="text" id="minion_id" placeholder="WHEAT" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none">
             </div>
             <div>
@@ -244,6 +266,17 @@ import Layout from '../../layouts/Layout.astro';
             + Add Gather Item
           </button>
         </section>
+
+        <!-- Import YAML -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Import Existing Config</h2>
+          <div class="space-y-4">
+            <textarea id="import-yaml" rows="4" placeholder="Paste your existing YAML config here to edit it..." class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none font-mono text-sm"></textarea>
+            <button id="import-btn" class="px-4 py-2 rounded-lg bg-zinc-700 text-zinc-300 hover:bg-emerald-600 hover:text-white transition-colors">
+              Import & Load
+            </button>
+          </div>
+        </section>
       </div>
 
       <!-- Preview Panel -->
@@ -262,12 +295,51 @@ import Layout from '../../layouts/Layout.astro';
           </div>
           <pre id="yaml-preview" class="p-4 overflow-auto max-h-[calc(100vh-200px)] text-sm font-mono text-zinc-300 yaml-preview"></pre>
         </div>
+        <!-- Validation Messages -->
+        <div id="validation-msg" class="hidden mt-4 p-4 rounded-lg border border-red-500/50 bg-red-500/10 text-red-400 text-sm">
+          <p class="font-medium mb-2">Missing required fields:</p>
+          <ul id="validation-list" class="list-disc list-inside"></ul>
+        </div>
       </div>
     </div>
   </div>
 </Layout>
 
 <script>
+  // Presets
+  const minionPresets: Record<string, any> = {
+    wheat_farmer: {
+      minion_id: 'WHEAT', display_name: 'Wheat Minion', type: 'FARMER',
+      crop: 'WHEAT', layout_material: 'FARMLAND',
+      tool: 'DIAMOND_HOE', off_hand: 'WHEAT_SEEDS',
+      gather_material: 'WHEAT', chestplate_color: '#FFD700', leggings_color: '#FFD700', boots_color: '#FFD700'
+    },
+    cobblestone_miner: {
+      minion_id: 'COBBLESTONE', display_name: 'Cobblestone Minion', type: 'MINER',
+      miner_layout: 'COBBLESTONE',
+      tool: 'DIAMOND_PICKAXE', off_hand: 'COBBLESTONE',
+      gather_material: 'COBBLESTONE', chestplate_color: '#808080', leggings_color: '#808080', boots_color: '#808080'
+    },
+    oak_lumberjack: {
+      minion_id: 'OAK', display_name: 'Oak Minion', type: 'LUMBERJACK',
+      log_material: 'OAK_LOG', leaves_material: 'OAK_LEAVES', sapling_material: 'OAK_SAPLING', lumberjack_layout: 'GRASS_BLOCK',
+      tool: 'DIAMOND_AXE', off_hand: 'OAK_SAPLING',
+      gather_material: 'OAK_LOG', chestplate_color: '#8B4513', leggings_color: '#8B4513', boots_color: '#8B4513'
+    },
+    zombie_slayer: {
+      minion_id: 'ZOMBIE', display_name: 'Zombie Minion', type: 'SLAYER',
+      slayer_layout: 'COBBLESTONE', mob_type: 'ZOMBIE', mob_chance: '100', mob_detection_radius: '3',
+      tool: 'DIAMOND_SWORD', off_hand: 'ROTTEN_FLESH',
+      gather_material: 'ROTTEN_FLESH', chestplate_color: '#228B22', leggings_color: '#228B22', boots_color: '#228B22'
+    },
+    basic_fisher: {
+      minion_id: 'FISHING', display_name: 'Fishing Minion', type: 'FISHER',
+      fisher_layout: 'WATER',
+      tool: 'FISHING_ROD', off_hand: 'COD',
+      gather_material: 'COD', chestplate_color: '#4169E1', leggings_color: '#4169E1', boots_color: '#4169E1'
+    }
+  };
+
   // Helper to convert hex color to RGB string
   function hexToRgb(hex: string): string {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -576,8 +648,95 @@ minion_levels:
     updatePreview();
   }
 
+  // Validate
+  function validate(): string[] {
+    const errors: string[] = [];
+    const v = getFormValues();
+    if (!v.minion_id || v.minion_id === 'EXAMPLE') errors.push('Minion ID is required');
+    if (!v.display_name || v.display_name === 'Example Minion') errors.push('Display Name is required');
+    return errors;
+  }
+
+  // Show/hide validation
+  function showValidation(errors: string[]) {
+    const msgEl = document.getElementById('validation-msg');
+    const listEl = document.getElementById('validation-list');
+    if (!msgEl || !listEl) return;
+
+    if (errors.length > 0) {
+      listEl.innerHTML = errors.map(e => `<li>${e}</li>`).join('');
+      msgEl.classList.remove('hidden');
+    } else {
+      msgEl.classList.add('hidden');
+    }
+  }
+
+  // Apply preset
+  function applyPreset(presetName: string) {
+    const preset = minionPresets[presetName];
+    if (!preset) return;
+
+    (document.getElementById('minion_id') as HTMLInputElement).value = preset.minion_id;
+    (document.getElementById('display_name') as HTMLInputElement).value = preset.display_name;
+    (document.getElementById('minion_type') as HTMLSelectElement).value = preset.type;
+
+    // Type-specific fields
+    if (preset.crop) (document.getElementById('crop') as HTMLInputElement).value = preset.crop;
+    if (preset.layout_material) (document.getElementById('layout_material') as HTMLInputElement).value = preset.layout_material;
+    if (preset.log_material) (document.getElementById('log_material') as HTMLInputElement).value = preset.log_material;
+    if (preset.leaves_material) (document.getElementById('leaves_material') as HTMLInputElement).value = preset.leaves_material;
+    if (preset.sapling_material) (document.getElementById('sapling_material') as HTMLInputElement).value = preset.sapling_material;
+    if (preset.lumberjack_layout) (document.getElementById('lumberjack_layout') as HTMLInputElement).value = preset.lumberjack_layout;
+    if (preset.miner_layout) (document.getElementById('miner_layout') as HTMLInputElement).value = preset.miner_layout;
+    if (preset.fisher_layout) (document.getElementById('fisher_layout') as HTMLInputElement).value = preset.fisher_layout;
+    if (preset.slayer_layout) (document.getElementById('slayer_layout') as HTMLInputElement).value = preset.slayer_layout;
+    if (preset.mob_type) (document.getElementById('mob_type') as HTMLInputElement).value = preset.mob_type;
+    if (preset.mob_chance) (document.getElementById('mob_chance') as HTMLInputElement).value = preset.mob_chance;
+    if (preset.mob_detection_radius) (document.getElementById('mob_detection_radius') as HTMLInputElement).value = preset.mob_detection_radius;
+
+    // Tools
+    if (preset.tool) (document.getElementById('tool') as HTMLInputElement).value = preset.tool;
+    if (preset.off_hand) (document.getElementById('off_hand') as HTMLInputElement).value = preset.off_hand;
+
+    // Colors
+    if (preset.chestplate_color) (document.getElementById('chestplate_color') as HTMLInputElement).value = preset.chestplate_color;
+    if (preset.leggings_color) (document.getElementById('leggings_color') as HTMLInputElement).value = preset.leggings_color;
+    if (preset.boots_color) (document.getElementById('boots_color') as HTMLInputElement).value = preset.boots_color;
+
+    // Gather item
+    const gatherMaterial = document.querySelector('.gather-material') as HTMLInputElement;
+    if (gatherMaterial && preset.gather_material) gatherMaterial.value = preset.gather_material;
+
+    updateTypeFields();
+  }
+
+  // Import YAML
+  function importYaml() {
+    const yaml = (document.getElementById('import-yaml') as HTMLTextAreaElement).value;
+    if (!yaml) return;
+
+    const getValue = (key: string): string => {
+      const match = yaml.match(new RegExp(`^${key}:\\s*(.+)$`, 'm'));
+      return match ? match[1].trim().replace(/^['"]|['"]$/g, '') : '';
+    };
+
+    const id = getValue('minion_id');
+    if (id) (document.getElementById('minion_id') as HTMLInputElement).value = id;
+
+    const displayName = getValue('display_name');
+    if (displayName) (document.getElementById('display_name') as HTMLInputElement).value = displayName;
+
+    const type = getValue('type');
+    if (type) (document.getElementById('minion_type') as HTMLSelectElement).value = type;
+
+    updateTypeFields();
+  }
+
   // Copy to clipboard
   async function copyYaml() {
+    const errors = validate();
+    showValidation(errors);
+
     const yaml = generateYaml();
     await navigator.clipboard.writeText(yaml);
     const btn = document.getElementById('copy-yaml');
@@ -589,6 +748,10 @@ minion_levels:
 
   // Download YAML
   function downloadYaml() {
+    const errors = validate();
+    showValidation(errors);
+    if (errors.length > 0) return;
+
     const yaml = generateYaml();
     const v = getFormValues();
     const filename = `${v.minion_id.toLowerCase() || 'minion'}.yml`;
@@ -614,6 +777,17 @@ minion_levels:
 
     // Add gather item button
     document.getElementById('add-gather-item')?.addEventListener('click', addGatherItem);
+
+    // Preset buttons
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = (btn as HTMLElement).dataset.preset;
+        if (preset) applyPreset(preset);
+      });
+    });
+
+    // Import button
+    document.getElementById('import-btn')?.addEventListener('click', importYaml);
 
     // Copy/download buttons
     document.getElementById('copy-yaml')?.addEventListener('click', copyYaml);

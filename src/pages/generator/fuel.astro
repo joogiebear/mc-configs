@@ -1,0 +1,427 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Fuel & Upgrade Generator" description="Generate custom TopMinion fuel and upgrade configurations">
+  <div class="space-y-6">
+    <div class="flex items-center gap-4">
+      <a href="/generator" class="text-zinc-400 hover:text-white transition-colors">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+      <h1 class="text-3xl font-bold text-white">Fuel & Upgrade Generator</h1>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Form Panel -->
+      <div class="space-y-6">
+        <!-- Type Selection -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Type</h2>
+          <div class="flex gap-4">
+            <label class="flex-1">
+              <input type="radio" name="config_type" value="FUEL" checked class="sr-only peer">
+              <div class="p-4 rounded-lg border-2 border-zinc-700 bg-zinc-900 cursor-pointer transition-all peer-checked:border-amber-500 peer-checked:bg-amber-500/10 hover:border-zinc-600">
+                <div class="flex items-center gap-3">
+                  <svg class="h-6 w-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                  </svg>
+                  <div>
+                    <p class="font-medium text-white">Fuel</p>
+                    <p class="text-sm text-zinc-400">Speed boost items</p>
+                  </div>
+                </div>
+              </div>
+            </label>
+            <label class="flex-1">
+              <input type="radio" name="config_type" value="UPGRADE" class="sr-only peer">
+              <div class="p-4 rounded-lg border-2 border-zinc-700 bg-zinc-900 cursor-pointer transition-all peer-checked:border-cyan-500 peer-checked:bg-cyan-500/10 hover:border-zinc-600">
+                <div class="flex items-center gap-3">
+                  <svg class="h-6 w-6 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <div>
+                    <p class="font-medium text-white">Upgrade</p>
+                    <p class="text-sm text-zinc-400">Compactors & smelters</p>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <!-- Presets -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Presets</h2>
+          <div class="flex flex-wrap gap-2">
+            <button data-preset="coal" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-amber-500 hover:text-amber-400 transition-colors text-sm">
+              Basic Coal
+            </button>
+            <button data-preset="enchanted_coal" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-amber-500 hover:text-amber-400 transition-colors text-sm">
+              Enchanted Coal
+            </button>
+            <button data-preset="solar_panel" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-amber-500 hover:text-amber-400 transition-colors text-sm">
+              Solar Panel
+            </button>
+            <button data-preset="compactor" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-cyan-500 hover:text-cyan-400 transition-colors text-sm">
+              Compactor
+            </button>
+            <button data-preset="smelter" class="preset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-cyan-500 hover:text-cyan-400 transition-colors text-sm">
+              Smelter
+            </button>
+          </div>
+        </section>
+
+        <!-- Basic Info -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Basic Info</h2>
+          <div class="space-y-4">
+            <div>
+              <label for="config_id" class="block text-sm font-medium text-zinc-300 mb-1">
+                ID <span class="text-red-400">*</span>
+              </label>
+              <input type="text" id="config_id" placeholder="COAL" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="display_name" class="block text-sm font-medium text-zinc-300 mb-1">Display Name</label>
+              <input type="text" id="display_name" placeholder="Coal" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="item_lore" class="block text-sm font-medium text-zinc-300 mb-1">Lore (one per line)</label>
+              <textarea id="item_lore" rows="2" placeholder="&7Basic fuel source" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Display Item -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Display Item</h2>
+          <div class="space-y-4">
+            <div>
+              <label for="material" class="block text-sm font-medium text-zinc-300 mb-1">Material</label>
+              <input type="text" id="material" placeholder="COAL" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none">
+              <p class="text-xs text-zinc-500 mt-1">Use a Minecraft material name (e.g., COAL, FURNACE, HOPPER)</p>
+            </div>
+            <div>
+              <label for="skull_texture" class="block text-sm font-medium text-zinc-300 mb-1">Or Skull Texture (Base64)</label>
+              <textarea id="skull_texture" rows="2" placeholder="eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6I..." class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none font-mono text-sm"></textarea>
+              <p class="text-xs text-zinc-500 mt-1">Leave empty to use material, or provide texture for custom head</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Options -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Options</h2>
+          <div class="space-y-4">
+            <div>
+              <label for="max_usages" class="block text-sm font-medium text-zinc-300 mb-1">Max Usages</label>
+              <input type="number" id="max_usages" value="30" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none">
+              <p class="text-xs text-zinc-500 mt-1">Use -1 for infinite usages</p>
+            </div>
+            <!-- Fuel-only option -->
+            <div id="speed-increase-field">
+              <label for="speed_increase" class="block text-sm font-medium text-zinc-300 mb-1">Speed Increase (%)</label>
+              <input type="number" id="speed_increase" value="5" min="0" max="100" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none">
+              <p class="text-xs text-zinc-500 mt-1">How much faster the minion works (fuel only)</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Import YAML -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Import Existing Config</h2>
+          <div class="space-y-4">
+            <textarea id="import-yaml" rows="4" placeholder="Paste your existing YAML config here to edit it..." class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none font-mono text-sm"></textarea>
+            <button id="import-btn" class="px-4 py-2 rounded-lg bg-zinc-700 text-zinc-300 hover:bg-amber-600 hover:text-white transition-colors">
+              Import & Load
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="lg:sticky lg:top-8 lg:self-start">
+        <div class="rounded-lg border border-zinc-800 bg-zinc-800/50 overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-700 bg-zinc-900/50">
+            <h3 class="font-medium text-white">YAML Preview</h3>
+            <div class="flex gap-2">
+              <button id="copy-yaml" class="px-3 py-1.5 text-sm rounded-lg bg-zinc-700 text-zinc-300 hover:bg-amber-600 hover:text-white transition-colors">
+                Copy
+              </button>
+              <button id="download-yaml" class="px-3 py-1.5 text-sm rounded-lg bg-amber-600 text-white hover:bg-amber-500 transition-colors">
+                Download
+              </button>
+            </div>
+          </div>
+          <pre id="yaml-preview" class="p-4 overflow-auto max-h-[calc(100vh-200px)] text-sm font-mono text-zinc-300 yaml-preview"></pre>
+        </div>
+        <!-- Validation Messages -->
+        <div id="validation-msg" class="hidden mt-4 p-4 rounded-lg border border-red-500/50 bg-red-500/10 text-red-400 text-sm">
+          <p class="font-medium mb-2">Missing required fields:</p>
+          <ul id="validation-list" class="list-disc list-inside"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Presets
+  const presets: Record<string, {type: string, id: string, name: string, material: string, max_usages: number, speed_increase: number, lore: string}> = {
+    coal: { type: 'FUEL', id: 'COAL', name: 'Coal', material: 'COAL', max_usages: 30, speed_increase: 5, lore: '&7Basic fuel source' },
+    enchanted_coal: { type: 'FUEL', id: 'ENCHANTED_COAL', name: 'Enchanted Coal', material: 'COAL', max_usages: 100, speed_increase: 25, lore: '&7Enhanced fuel source\n&6+25% speed boost' },
+    solar_panel: { type: 'FUEL', id: 'SOLAR_PANEL', name: 'Solar Panel', material: 'DAYLIGHT_DETECTOR', max_usages: -1, speed_increase: 10, lore: '&7Infinite solar power\n&eWorks during daytime' },
+    compactor: { type: 'UPGRADE', id: 'COMPACTOR', name: 'Compactor', material: 'HOPPER', max_usages: -1, speed_increase: 0, lore: '&7Automatically compacts items' },
+    smelter: { type: 'UPGRADE', id: 'SMELTER', name: 'Smelter', material: 'FURNACE', max_usages: -1, speed_increase: 0, lore: '&7Automatically smelts items' },
+  };
+
+  // Get selected type
+  function getSelectedType(): string {
+    const checked = document.querySelector('input[name="config_type"]:checked') as HTMLInputElement;
+    return checked?.value || 'FUEL';
+  }
+
+  // Get form values
+  function getFormValues() {
+    return {
+      type: getSelectedType(),
+      id: (document.getElementById('config_id') as HTMLInputElement).value || 'EXAMPLE',
+      name: (document.getElementById('display_name') as HTMLInputElement).value || 'Example',
+      lore: (document.getElementById('item_lore') as HTMLTextAreaElement).value,
+      material: (document.getElementById('material') as HTMLInputElement).value,
+      skull_texture: (document.getElementById('skull_texture') as HTMLTextAreaElement).value,
+      max_usages: (document.getElementById('max_usages') as HTMLInputElement).value,
+      speed_increase: (document.getElementById('speed_increase') as HTMLInputElement).value,
+    };
+  }
+
+  // Validate
+  function validate(): string[] {
+    const errors: string[] = [];
+    const v = getFormValues();
+    if (!v.id || v.id === 'EXAMPLE') errors.push('ID is required');
+    return errors;
+  }
+
+  // Show/hide validation
+  function showValidation(errors: string[]) {
+    const msgEl = document.getElementById('validation-msg');
+    const listEl = document.getElementById('validation-list');
+    if (!msgEl || !listEl) return;
+
+    if (errors.length > 0) {
+      listEl.innerHTML = errors.map(e => `<li>${e}</li>`).join('');
+      msgEl.classList.remove('hidden');
+    } else {
+      msgEl.classList.add('hidden');
+    }
+  }
+
+  // Generate YAML
+  function generateYaml(): string {
+    const v = getFormValues();
+
+    let materialSection = '';
+    if (v.skull_texture) {
+      materialSection = `    skull: ${v.skull_texture}`;
+    } else {
+      materialSection = `    default: ${v.material || 'COAL'}`;
+    }
+
+    let yaml = `id: ${v.id}
+
+type: ${v.type}
+
+display_item:
+  material:
+${materialSection}
+    hook:
+      items_adder: ''
+      oraxen: ''
+      nexo: ''
+  name: ${v.name}`;
+
+    if (v.lore) {
+      yaml += `
+  lore:`;
+      v.lore.split('\n').forEach(line => {
+        if (line.trim()) {
+          yaml += `
+    - '${line}'`;
+        }
+      });
+    } else {
+      yaml += `
+  lore: []`;
+    }
+
+    yaml += `
+
+options:
+  max_usages: ${v.max_usages}`;
+
+    if (v.type === 'FUEL') {
+      yaml += `
+  speed_increase: ${v.speed_increase}`;
+    }
+
+    return yaml;
+  }
+
+  // Update preview
+  function updatePreview() {
+    const preview = document.getElementById('yaml-preview');
+    if (preview) {
+      preview.textContent = generateYaml();
+    }
+  }
+
+  // Update UI based on type
+  function updateTypeUI() {
+    const type = getSelectedType();
+    const speedField = document.getElementById('speed-increase-field');
+    if (speedField) {
+      speedField.style.display = type === 'FUEL' ? 'block' : 'none';
+    }
+    updatePreview();
+  }
+
+  // Apply preset
+  function applyPreset(presetName: string) {
+    const preset = presets[presetName];
+    if (!preset) return;
+
+    // Set type radio
+    const radio = document.querySelector(`input[name="config_type"][value="${preset.type}"]`) as HTMLInputElement;
+    if (radio) radio.checked = true;
+
+    // Set fields
+    (document.getElementById('config_id') as HTMLInputElement).value = preset.id;
+    (document.getElementById('display_name') as HTMLInputElement).value = preset.name;
+    (document.getElementById('material') as HTMLInputElement).value = preset.material;
+    (document.getElementById('max_usages') as HTMLInputElement).value = String(preset.max_usages);
+    (document.getElementById('speed_increase') as HTMLInputElement).value = String(preset.speed_increase);
+    (document.getElementById('item_lore') as HTMLTextAreaElement).value = preset.lore;
+    (document.getElementById('skull_texture') as HTMLTextAreaElement).value = '';
+
+    updateTypeUI();
+  }
+
+  // Import YAML
+  function importYaml() {
+    const yaml = (document.getElementById('import-yaml') as HTMLTextAreaElement).value;
+    if (!yaml) return;
+
+    // Simple regex parsing
+    const getValue = (key: string): string => {
+      const match = yaml.match(new RegExp(`^${key}:\\s*(.+)$`, 'm'));
+      return match ? match[1].trim().replace(/^['"]|['"]$/g, '') : '';
+    };
+
+    const type = getValue('type');
+    if (type) {
+      const radio = document.querySelector(`input[name="config_type"][value="${type}"]`) as HTMLInputElement;
+      if (radio) radio.checked = true;
+    }
+
+    const id = getValue('id');
+    if (id) (document.getElementById('config_id') as HTMLInputElement).value = id;
+
+    // Parse name from display_item
+    const nameMatch = yaml.match(/name:\s*(.+)/m);
+    if (nameMatch) (document.getElementById('display_name') as HTMLInputElement).value = nameMatch[1].trim().replace(/^['"]|['"]$/g, '');
+
+    // Parse material
+    const materialMatch = yaml.match(/default:\s*(\w+)/m);
+    if (materialMatch) (document.getElementById('material') as HTMLInputElement).value = materialMatch[1];
+
+    // Parse skull
+    const skullMatch = yaml.match(/skull:\s*(.+)/m);
+    if (skullMatch) (document.getElementById('skull_texture') as HTMLTextAreaElement).value = skullMatch[1].trim();
+
+    // Parse options
+    const maxUsages = getValue('max_usages');
+    if (maxUsages) (document.getElementById('max_usages') as HTMLInputElement).value = maxUsages;
+
+    const speedIncrease = getValue('speed_increase');
+    if (speedIncrease) (document.getElementById('speed_increase') as HTMLInputElement).value = speedIncrease;
+
+    // Parse lore
+    const loreMatch = yaml.match(/lore:\s*\n((?:\s+-\s*.+\n?)*)/m);
+    if (loreMatch) {
+      const loreLines = loreMatch[1].match(/-\s*['"]?(.+?)['"]?\s*$/gm);
+      if (loreLines) {
+        const lore = loreLines.map(l => l.replace(/^\s*-\s*['"]?|['"]?\s*$/g, '')).join('\n');
+        (document.getElementById('item_lore') as HTMLTextAreaElement).value = lore;
+      }
+    }
+
+    updateTypeUI();
+  }
+
+  // Copy to clipboard
+  async function copyYaml() {
+    const errors = validate();
+    showValidation(errors);
+
+    const yaml = generateYaml();
+    await navigator.clipboard.writeText(yaml);
+    const btn = document.getElementById('copy-yaml');
+    if (btn) {
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+    }
+  }
+
+  // Download YAML
+  function downloadYaml() {
+    const errors = validate();
+    showValidation(errors);
+    if (errors.length > 0) return;
+
+    const yaml = generateYaml();
+    const v = getFormValues();
+    const filename = `${v.id.toLowerCase() || 'config'}.yml`;
+    const blob = new Blob([yaml], { type: 'text/yaml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    // Input listeners
+    document.querySelectorAll('input, textarea').forEach(el => {
+      el.addEventListener('input', updatePreview);
+      el.addEventListener('change', updatePreview);
+    });
+
+    // Type radio listeners
+    document.querySelectorAll('input[name="config_type"]').forEach(el => {
+      el.addEventListener('change', updateTypeUI);
+    });
+
+    // Preset buttons
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = (btn as HTMLElement).dataset.preset;
+        if (preset) applyPreset(preset);
+      });
+    });
+
+    // Import button
+    document.getElementById('import-btn')?.addEventListener('click', importYaml);
+
+    // Copy/download buttons
+    document.getElementById('copy-yaml')?.addEventListener('click', copyYaml);
+    document.getElementById('download-yaml')?.addEventListener('click', downloadYaml);
+
+    // Initial render
+    updatePreview();
+  });
+</script>

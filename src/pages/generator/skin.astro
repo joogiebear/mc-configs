@@ -21,7 +21,7 @@ import Layout from '../../layouts/Layout.astro';
           <h2 class="text-xl font-bold text-white mb-4">Basic Info</h2>
           <div class="space-y-4">
             <div>
-              <label for="skin_id" class="block text-sm font-medium text-zinc-300 mb-1">Skin ID</label>
+              <label for="skin_id" class="block text-sm font-medium text-zinc-300 mb-1">Skin ID <span class="text-red-400">*</span></label>
               <input type="text" id="skin_id" placeholder="amethyst_skin" class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none">
             </div>
             <div>
@@ -125,9 +125,23 @@ import Layout from '../../layouts/Layout.astro';
           </div>
         </section>
 
-        <!-- Color Presets -->
+        <!-- Full Skin Presets -->
         <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
-          <h2 class="text-xl font-bold text-white mb-4">Color Presets</h2>
+          <h2 class="text-xl font-bold text-white mb-4">Full Skin Presets</h2>
+          <p class="text-sm text-zinc-400 mb-4">Apply a complete skin configuration</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <button data-fullpreset="default" class="fullpreset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-purple-500 hover:text-purple-400 transition-colors text-sm">
+              Default Leather
+            </button>
+            <button data-fullpreset="diamond" class="fullpreset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-cyan-500 hover:text-cyan-400 transition-colors text-sm">
+              Diamond
+            </button>
+            <button data-fullpreset="netherite" class="fullpreset-btn px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-gray-400 hover:text-gray-300 transition-colors text-sm">
+              Netherite
+            </button>
+          </div>
+
+          <h3 class="text-lg font-bold text-white mb-3">Color Presets</h3>
           <p class="text-sm text-zinc-400 mb-4">Click a preset to apply colors to all armor pieces</p>
           <div class="grid grid-cols-4 gap-2">
             <button data-preset="amethyst" class="preset-btn p-3 rounded-lg border border-zinc-700 bg-gradient-to-br from-purple-600 to-purple-900 hover:border-purple-500 transition-colors">
@@ -156,6 +170,17 @@ import Layout from '../../layouts/Layout.astro';
             </button>
           </div>
         </section>
+
+        <!-- Import YAML -->
+        <section class="rounded-lg border border-zinc-800 bg-zinc-800/50 p-6">
+          <h2 class="text-xl font-bold text-white mb-4">Import Existing Config</h2>
+          <div class="space-y-4">
+            <textarea id="import-yaml" rows="4" placeholder="Paste your existing YAML config here to edit it..." class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none font-mono text-sm"></textarea>
+            <button id="import-btn" class="px-4 py-2 rounded-lg bg-zinc-700 text-zinc-300 hover:bg-purple-600 hover:text-white transition-colors">
+              Import & Load
+            </button>
+          </div>
+        </section>
       </div>
 
       <!-- Preview Panel -->
@@ -174,12 +199,36 @@ import Layout from '../../layouts/Layout.astro';
           </div>
           <pre id="yaml-preview" class="p-4 overflow-auto max-h-[calc(100vh-200px)] text-sm font-mono text-zinc-300 yaml-preview"></pre>
         </div>
+        <!-- Validation Messages -->
+        <div id="validation-msg" class="hidden mt-4 p-4 rounded-lg border border-red-500/50 bg-red-500/10 text-red-400 text-sm">
+          <p class="font-medium mb-2">Missing required fields:</p>
+          <ul id="validation-list" class="list-disc list-inside"></ul>
+        </div>
       </div>
     </div>
   </div>
 </Layout>
 
 <script>
+  // Full skin presets
+  const fullPresets: Record<string, any> = {
+    default: {
+      id: 'default_skin', name: '&f&lDefault Skin',
+      chestHex: '#A0522D', legsHex: '#8B4513', bootsHex: '#654321',
+      tool: 'IRON_PICKAXE', offhand: 'AIR'
+    },
+    diamond: {
+      id: 'diamond_skin', name: '&b&lDiamond Skin',
+      chestHex: '#00CED1', legsHex: '#00BFFF', bootsHex: '#1E90FF',
+      tool: 'DIAMOND_PICKAXE', offhand: 'DIAMOND'
+    },
+    netherite: {
+      id: 'netherite_skin', name: '&8&lNetherite Skin',
+      chestHex: '#3D3D3D', legsHex: '#2D2D2D', bootsHex: '#1D1D1D',
+      tool: 'NETHERITE_PICKAXE', offhand: 'NETHERITE_INGOT'
+    }
+  };
+
   // Color presets (RGB values)
   const presets: Record<string, {chest: string, legs: string, boots: string, chestHex: string, legsHex: string, bootsHex: string}> = {
     amethyst: { chest: '148,0,211', legs: '138,43,226', boots: '128,0,200', chestHex: '#9400D3', legsHex: '#8A2BE2', bootsHex: '#8000C8' },
@@ -304,8 +353,81 @@ minion_display:
     updatePreview();
   }
 
+  // Validate
+  function validate(): string[] {
+    const errors: string[] = [];
+    const v = getFormValues();
+    if (!v.id || v.id === 'custom_skin') errors.push('Skin ID is required');
+    return errors;
+  }
+
+  // Show/hide validation
+  function showValidation(errors: string[]) {
+    const msgEl = document.getElementById('validation-msg');
+    const listEl = document.getElementById('validation-list');
+    if (!msgEl || !listEl) return;
+
+    if (errors.length > 0) {
+      listEl.innerHTML = errors.map(e => `<li>${e}</li>`).join('');
+      msgEl.classList.remove('hidden');
+    } else {
+      msgEl.classList.add('hidden');
+    }
+  }
+
+  // Apply full preset
+  function applyFullPreset(presetName: string) {
+    const preset = fullPresets[presetName];
+    if (!preset) return;
+
+    (document.getElementById('skin_id') as HTMLInputElement).value = preset.id;
+    (document.getElementById('skin_name') as HTMLInputElement).value = preset.name;
+
+    // Colors
+    (document.getElementById('chest_color') as HTMLInputElement).value = preset.chestHex;
+    (document.getElementById('legs_color') as HTMLInputElement).value = preset.legsHex;
+    (document.getElementById('boots_color') as HTMLInputElement).value = preset.bootsHex;
+    updateRgbDisplay('chest_color', 'chest_color_rgb');
+    updateRgbDisplay('legs_color', 'legs_color_rgb');
+    updateRgbDisplay('boots_color', 'boots_color_rgb');
+
+    // Equipment
+    (document.getElementById('skin_tool') as HTMLInputElement).value = preset.tool;
+    (document.getElementById('skin_offhand') as HTMLInputElement).value = preset.offhand;
+
+    updatePreview();
+  }
+
+  // Import YAML
+  function importYaml() {
+    const yaml = (document.getElementById('import-yaml') as HTMLTextAreaElement).value;
+    if (!yaml) return;
+
+    const getValue = (key: string): string => {
+      const match = yaml.match(new RegExp(`^${key}:\\s*(.+)$`, 'm'));
+      return match ? match[1].trim().replace(/^['"]|['"]$/g, '') : '';
+    };
+
+    const id = getValue('id');
+    if (id) (document.getElementById('skin_id') as HTMLInputElement).value = id;
+
+    const nameMatch = yaml.match(/name:\s*['"]?(.+?)['"]?\s*$/m);
+    if (nameMatch) (document.getElementById('skin_name') as HTMLInputElement).value = nameMatch[1];
+
+    const toolMatch = yaml.match(/tool:\s*(\w+)/m);
+    if (toolMatch) (document.getElementById('skin_tool') as HTMLInputElement).value = toolMatch[1];
+
+    const offhandMatch = yaml.match(/off_hand:\s*(\w+)/m);
+    if (offhandMatch) (document.getElementById('skin_offhand') as HTMLInputElement).value = offhandMatch[1];
+
+    updatePreview();
+  }
+
   // Copy to clipboard
   async function copyYaml() {
+    const errors = validate();
+    showValidation(errors);
+
     const yaml = generateYaml();
     await navigator.clipboard.writeText(yaml);
     const btn = document.getElementById('copy-yaml');
@@ -317,6 +439,10 @@ minion_display:
 
   // Download YAML
   function downloadYaml() {
+    const errors = validate();
+    showValidation(errors);
+    if (errors.length > 0) return;
+
     const yaml = generateYaml();
     const v = getFormValues();
     const filename = `${v.id || 'skin'}.yml`;
@@ -345,13 +471,24 @@ minion_display:
       });
     });
 
-    // Preset buttons
+    // Color preset buttons
     document.querySelectorAll('.preset-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const preset = (btn as HTMLElement).dataset.preset;
         if (preset) applyPreset(preset);
       });
     });
+
+    // Full preset buttons
+    document.querySelectorAll('.fullpreset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = (btn as HTMLElement).dataset.fullpreset;
+        if (preset) applyFullPreset(preset);
+      });
+    });
+
+    // Import button
+    document.getElementById('import-btn')?.addEventListener('click', importYaml);
 
     // Copy/download buttons
     document.getElementById('copy-yaml')?.addEventListener('click', copyYaml);
