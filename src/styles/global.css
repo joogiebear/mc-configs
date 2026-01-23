@@ -7,8 +7,8 @@
     font-size: 0.8125rem;
     line-height: 1.6;
     white-space: pre;
-    color: var(--color-zinc-200);
-    background: linear-gradient(to bottom, var(--color-zinc-900), var(--color-zinc-950));
+    color: #e4e4e7;
+    background: linear-gradient(to bottom, #18181b, #09090b);
     tab-size: 2;
   }
 }
